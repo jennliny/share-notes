@@ -35,6 +35,11 @@ app.get("/yi-wen", (req, res) => {
   res.render("yi-wen");
 });
 
+app.get("/Keyi", (req, res) => {
+  res.render("Keyi");
+});
+
+
 app.use(errorController.pageNotFoundError);
 app.use(errorController.internalServerError);
 
