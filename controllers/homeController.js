@@ -1,6 +1,7 @@
 "use strict";
 
 var courses = [
+  //here change them into buttons of majors
   {
     title: "Event Driven Cakes",
     cost: 50
@@ -19,7 +20,9 @@ exports.showAbout = (req, res) => {
   res.render("about");
 };
 
-
+exports.showForum = (req, res) => {
+  res.render("forum");
+};
 
 exports.showCourses = (req, res) => {
   res.render("courses", {
