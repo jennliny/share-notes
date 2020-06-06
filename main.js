@@ -25,7 +25,9 @@ app.get("/", (req, res) => {
 app.get("/courses", homeController.showCourses);
 app.get("/contact", homeController.showSignUp);
 app.post("/contact", homeController.postedSignUpForm);
+app.get("/forum", homeController.showForum);
 app.get("/about", homeController.showAbout);
+
 
 app.get("/jennifer", (req, res) => {
   res.render("jennifer");
