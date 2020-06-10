@@ -1,6 +1,6 @@
 "use strict";
 
-var courses = [
+var OLDcourses = [
   //here change them into buttons of majors
   {
     title: "Event Driven Cakes",
@@ -16,6 +16,10 @@ var courses = [
   }
 ];
 
+const coursesFile = require("../private/courses.json");
+//console.log(`courses.length = ${courses.length}`);
+console.log(JSON.stringify(courses[0],null,2));
+
 exports.showAbout = (req, res) => {
   res.render("about");
 };
@@ -29,6 +33,10 @@ exports.showCourses = (req, res) => {
     offeredCourses: courses
   });
 };
+
+exports.showSelectedCourses = (req, res) => {
+
+}
 
 exports.showSignUp = (req, res) => {
   res.render("contact");

@@ -1,5 +1,47 @@
 <div class="container">
+  <div class="col-sm-6">
+    <form method="post" action="/courses">
+      <table class="table table-bordered">
+        <tbody>
+          <tr>
+            <td> Major</td>
+            <td>
+              <select name="subject">
+                <option value="">Any Subject</option>
+                <option value="1193">Computer Science</option>
+                <option value="1201">Mathematics</option>
+                <option value="1202">Music</option>
+                <option value="1203">Neuroscience</option>
+              </select>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <input type="submit">
+    </form>
+  </div>
+  <div class="col-sm-6">
+    <h1> List of all Courses</h1>
+          <ol>
+            <% faculty.forEach(fac => { %>
+              <li>
+                <a href="/courses/<%= fac.email %>">
+                <%= fac.firstname %>
+                <%= fac.lastname %>
+                </a>
+              </li>
+
+            <% }); %>
+          </ol>
+
+  </div>
+</div>
+
+
+<div class="container">
   <h2 class="title">Choose Your Major</h2>
+
+
   <div class="col-sm-6">
 
       <a class="btn btn-primary btn-block" href="#" role="button">Anthropology</a>
