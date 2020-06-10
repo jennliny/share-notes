@@ -21,18 +21,7 @@
     </form>
   </div>
   <div class="col-sm-6">
-    <h1> List of all Courses</h1>
-          <ol>
-            <% faculty.forEach(fac => { %>
-              <li>
-                <a href="/courses/<%= fac.email %>">
-                <%= fac.firstname %>
-                <%= fac.lastname %>
-                </a>
-              </li>
-
-            <% }); %>
-          </ol>
+    
 
   </div>
 </div>

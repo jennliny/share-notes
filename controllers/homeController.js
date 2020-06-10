@@ -18,7 +18,7 @@ var OLDcourses = [
 
 const coursesFile = require("../private/courses.json");
 //console.log(`courses.length = ${courses.length}`);
-console.log(JSON.stringify(courses[0],null,2));
+//console.log(JSON.stringify(courses[0],null,2));
 
 exports.showAbout = (req, res) => {
   res.render("about");
@@ -30,12 +30,12 @@ exports.showForum = (req, res) => {
 
 exports.showCourses = (req, res) => {
   res.render("courses", {
-    offeredCourses: courses
+    offeredCourses: OLDcourses
   });
 };
 
 exports.showSelectedCourses = (req, res) => {
-
+  res.render("courses");
 }
 
 exports.showSignUp = (req, res) => {
