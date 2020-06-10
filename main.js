@@ -4,8 +4,15 @@ const express = require("express"),
   app = express(),
   homeController = require("./controllers/homeController"),
   errorController = require("./controllers/errorController"),
-  layouts = require("express-ejs-layouts"),
-  mongoose = require("mongoose");
+  layouts = require("express-ejs-layouts");
+
+const mongoose = require("mongoose");
+  mongoose.connect(
+     'mongodb://localhost/share-notes',
+     {useNewUrlParser:true})
+const db = mongoose.connection;
+  db.on('error',(x)=>console.log("connection error"+x))
+  db.once('open',(x)=>console.log("We connected at "+new Date()+x))
 
 app.set("view engine", "ejs");
 app.set("port", process.env.PORT || 3000);
@@ -42,6 +49,41 @@ app.get("/yi-wen", (req, res) => {
 app.get("/Keyi", (req, res) => {
   res.render("Keyi");
 });
+
+const Review=require("./models/Review")
+app.get("/showContacts",
+   async (req,res) => {
+     try {
+       res.locals.reviews = await Review.find({})
+       //res.json(res.locals.contacts)
+       res.render('showContacts')
+     }
+     catch(theError){
+       console.log("Error:")
+       res.send("There was an error in /showContacts!")
+
+     }
+   });
+
+app.post('/review',
+  async (req,res) => {
+    try {
+      let author = req.body.author
+      let subject = req.body.subject
+      let title = req.body.title
+      let courseID = req.body.courseID
+      let  term= req.body.term
+      let section = req.body.section
+      let newContact = new Review({author:author, subject:subject, title: title,
+       courseID:courseID, term: term, section: section})
+      await newContact.save()
+      res.redirect('/showContacts')
+    }
+    catch(e) {
+      console.dir(e)
+      res.send("error in addContact")
+    }
+})
 
 
 app.use(errorController.pageNotFoundError);

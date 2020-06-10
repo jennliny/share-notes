@@ -4,10 +4,8 @@ const Schema = mongoose.Schema;
 const ObjectId = mongoose.Schema.Types.ObjectId;
 
 var userSchema = Schema({
-  googleid:String,
-  googletoken: String,
-  googleemail:String,
-  userName:String,
+  name: String,
+  
 });
 
 module.exports = mongoose.model('User', userSchema);
