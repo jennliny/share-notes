@@ -55,7 +55,6 @@
   </div>
   <div class="col-sm-6">
 
-
   </div>
 </div>
 
@@ -68,29 +67,19 @@
     <img src="images/courses.png" alt="">
   </div>
   <div class="col-sm-6">
-      <a class="btn btn-primary btn-block" href="#" role="button">Anthropology</a>
-      <a class="btn btn-primary btn-block" href="#" role="button">Applied Mathematics</a>
-      <a class="btn btn-primary btn-block" href="#" role="button">Biochemistry</a>
-      <a class="btn btn-primary btn-block" href="#" role="button">Biologial Physics</a>
-      <a class="btn btn-primary btn-block" href="#" role="button">Biology</a>
-      <a class="btn btn-primary btn-block" href="#" role="button">Business</a>
-      <a class="btn btn-primary btn-block" href="#" role="button">Chemistry</a>
-      <a class="btn btn-primary btn-block" href="#" role="button">Comparative Literature</a>
-      <a class="btn btn-primary btn-block" href="#" role="button">Computer Science</a>
-      <a class="btn btn-primary btn-block" href="#" role="button">East Asian Studies</a>
-      <a class="btn btn-primary btn-block" href="#" role="button">Economics</a>
-      <a class="btn btn-primary btn-block" href="#" role="button">Education</a>
-      <a class="btn btn-primary btn-block" href="#" role="button">English</a>
-      <a class="btn btn-primary btn-block" href="#" role="button">German Studies</a>
-      <a class="btn btn-primary btn-block" href="#" role="button">History</a>
-      <a class="btn btn-primary btn-block" href="#" role="button">Linguistics</a>
-      <a class="btn btn-primary btn-block" href="#" role="button">Mathematics</a>
-      <a class="btn btn-primary btn-block" href="#" role="button">Music</a>
-      <a class="btn btn-primary btn-block" href="#" role="button">Neuroscience</a>
-      <a class="btn btn-primary btn-block" href="#" role="button">Philosophy</a>
-      <a class="btn btn-primary btn-block" href="#" role="button">Physics</a>
-      <a class="btn btn-primary btn-block" href="#" role="button">Politics</a>
-      <a class="btn btn-primary btn-block" href="#" role="button">Psychology</a>
-      <a class="btn btn-primary btn-block" href="#" role="button">Sociology</a>
+    <ul>
+      <% courses.forEach(course => {%>
+        <li>
+          Subject: <%= course.subject %><br>
+          Course #: <%= course.coursenum %><br>
+          Name: <%= course.name %><br>
+          <br>
+        </li>
+          <a href="/contact">Add a note</a>
+          <br>
+          <a href="/showContacts">Show notes</a>
+      <% }) %>
+    </ul>
+
   </div>
 </div>
