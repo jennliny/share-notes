@@ -1,37 +1,46 @@
 <div class="container">
   <div class="col-sm-6">
-    <img src="images/share.jpg" alt="">
+    <img src="images/Sharing.jpg" alt="">
   </div>
   <div class="col-sm-6">
     <h1>Reach out to other students!</h1>
     <p>Upload your notes and share them with other students!</p>
     <form action="/review" method="post">
-      <br>
-      <label for="author">Author: </label>
-      <input type="text" name="author" value="">
-      <br>
-      <label for="subject">Subject: </label>
-      <input type="text" name="subject" value="">
-      <br>
-      <br>
-      <label for="title">Course Title: </label>
-      <input type="text" name="title" value="">
-      <br>
-      <br>
-      <label for="courseID">Course Number: </label>
-      <input type="text" name="courseID" value="">
-      <br>
-      <br>
-      <label for="section">Course Section: </label>
-      <input type="text" name="section" value="">
-      <br>
-      <br>
-      <label for="term">Term: </label>
-      <input type="text" name="term" value="">
-      <br>
+      <div class="form-group">
+        <label for="author">Author</label>
+        <input type="text" name="author" value="" placeholder="Author Name" class=" form-control">
+      </div>
+      <div class="form-group">
+        <label for="subject">Subject</label>
+        <input type="text" name="subject" value="" placeholder="e.g. COSI" class=" form-control">
+      </div>
+      <div class="form-group">
+        <label for="subject">Course Title</label>
+        <input type="text" name="title" value="" placeholder="e.g. Web Application Development" class=" form-control">
+      </div>
+      <div class="form-group">
+        <label for="courseID">Course Number</label>
+        <input type="text" name="courseID" value="" placeholder="e.g. 152aj" class=" form-control">
+      </div>
+      <div class="form-group">
+        <label for="subject">Course Section</label>
+        <input type="text" name="section" value="" placeholder="e.g. 1" class=" form-control">
+      </div>
+      <div class="form-group">
+        <label for="term">Term</label>
+        <input type="text" name="term" value="" placeholder="e.g. 2427" class=" form-control">
+      </div>
+
       <!-- file including photos, pdf, or any type-->
-      <label for="notes">Notes: </label>
-      <input type="text" name="notes" value="">
+      <div>
+        <label for="notes">Notes: </label>
+        <input type="text" name="notes" value="" class=" form-control">
+      </div>
+      <!--submit notes in file form
+      <div class="form-group">
+        <label for="notes">Notes: </label>
+        <input type="file" class="form-control-file" name="notes" value="">
+      </div>-->
       <br>
       <input class="button" type="submit" value="Submit">
       <br>
