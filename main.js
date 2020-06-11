@@ -74,9 +74,9 @@ app.post('/review',
       let courseID = req.body.courseID
       let  term= req.body.term
       let section = req.body.section
-      let newContact = new Review({author:author, subject:subject, title: title,
+      let newReview = new Review({author:author, subject:subject, title: title,
        courseID:courseID, term: term, section: section})
-      await newContact.save()
+      await newReview.save()
       res.redirect('/showContacts')
     }
     catch(e) {

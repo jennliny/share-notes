@@ -37,6 +37,18 @@ a {
   text-decoration: none;
 }
 
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  width:100%;
+  table-layout: fixed;
+  font-weight: normal;
+}
+
+th, td {
+  padding: 5px;
+}
+
 #nav a {
   text-decoration: none;
 }
