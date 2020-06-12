@@ -1,20 +1,5 @@
 "use strict";
 
-var OLDcourses = [
-  //here change them into buttons of majors
-  {
-    title: "Event Driven Cakes",
-    cost: 50
-  },
-  {
-    title: "Asynchronous Artichoke",
-    cost: 25
-  },
-  {
-    title: "Object Oriented Orange Juice",
-    cost: 10
-  }
-];
 
 const courses = require("../private/courses.json");
 //console.log(`courses.length = ${courses.length}`);
@@ -24,9 +9,9 @@ exports.showAbout = (req, res) => {
   res.render("about");
 };
 
-exports.showForum = (req, res) => {
+/*exports.showForum = (req, res) => {
   res.render("forum");
-};
+};*/
 
 exports.showCourses = (req, res) => {
   res.render("courses", {
@@ -45,8 +30,8 @@ exports.showSelectedCourses = (req, res) => {
         ( (! course['independent_study'])
         &&
         ( (!subject) || course['subject']==subject)
-        //&&
-        //(!req.body.term || course['term']==req.body.term)
+        &&
+        (!req.body.term || course['term']==req.body.term)
       ))
 
 
@@ -60,6 +45,8 @@ exports.showSelectedCourses = (req, res) => {
     courses: selected_courses,
   });
 };
+
+
 
 exports.showSignUp = (req, res) => {
   res.render("contact");

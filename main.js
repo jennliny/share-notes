@@ -34,7 +34,6 @@ app.get("/courses", homeController.showCourses);
 app.post("/courses", homeController.showSelectedCourses);
 app.get("/contact", homeController.showSignUp);
 app.post("/contact", homeController.postedSignUpForm);
-app.get("/forum", homeController.showForum);
 app.get("/about", homeController.showAbout);
 
 
