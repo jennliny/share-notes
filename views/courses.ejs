@@ -124,9 +124,11 @@
           Course #: <%= course.coursenum %><br>
           Name: <%= course.name %><br>
           Term: <%=course.term %><br>
-          <a href="/contact">Add a note</a>
+          <a href="/note/<%= course.subject %>/<%= course.coursenum %>/<%=
+            course.section %>/<%= course.term%>">Add a note</a>
           <br>
-          <a href="/showContacts">Show notes</a>
+          <a href="/showContacts/<%= course.subject %>/<%= course.coursenum %>/<%=
+            course.section %>/<%= course.term%>">Show notes</a>
         </li>
         <br>
       <% }) %>
