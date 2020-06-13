@@ -108,7 +108,7 @@
                     <option value="1203">Fall 2020</option>
                   </select>
               <br />
-      <button type="submit" class="btn btn-light mb-2" >Submit</button>
+      <button type="submit" class="btn btn-info mb-2" >Submit</button>
     </form>
   </div>
 </div>
@@ -124,9 +124,12 @@
           Course #: <%= course.coursenum %><br>
           Name: <%= course.name %><br>
           Term: <%=course.term %><br>
-          <a href="/contact">Add a note</a>
-          <br>
-          <a href="/showContacts">Show notes</a>
+          Section: <%=course.section %><br>
+          <button type="button" class="btn btn-info"><a href="/note/<%= course.subject %>/<%= course.coursenum %>/<%=
+              course.section %>/<%= course.term%>">Add a note</a></button>
+          <button type="button" class="btn btn-info"><a href="/showNotes/<%= course.subject %>/<%= course.coursenum %>/<%=
+              course.section %>/<%= course.term%>">Show notes</a></button>
+
         </li>
         <br>
       <% }) %>

@@ -35,21 +35,16 @@ exports.showSelectedCourses = (req, res) => {
       ))
 
 
-  selected_courses.sort(
-    (c1,c2) => (c2.enrolled-c1.enrolled)
-  )
-
-  console.log("faculty = ")
-
   res.render("courses", {
     courses: selected_courses,
+    term: req.body.term
   });
 };
 
 
 
 exports.showSignUp = (req, res) => {
-  res.render("contact");
+  res.render("addNote");
 };
 
 exports.postedSignUpForm = (req, res) => {
