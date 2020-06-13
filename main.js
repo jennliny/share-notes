@@ -35,8 +35,8 @@ app.post("/courses", homeController.showSelectedCourses);
 
 app.post("/note", homeController.postedSignUpForm);
 app.get("/about", homeController.showAbout);
-app.get("/addNote", homeController.showSignUp);
-app.post("/addNote", homeController.postedSignUpForm);
+//app.get("/addNote", homeController.showSignUp);
+//app.post("/addNote", homeController.postedSignUpForm);
 
 app.get("/jennifer", (req, res) => {
   res.render("jennifer");
@@ -53,11 +53,11 @@ app.get("/Keyi", (req, res) => {
 
 const Note=require("./models/Note")
 
-//app.get("/addNote",
-  //(req,res) =>{
-  //  res.render("addNote", req.params)
-  //}
-//)
+app.get("/addNote",
+  (req,res) =>{
+    res.render("addNote", req.params)
+  }
+)
 //route to adding a note page
 app.get("/note/:subject/:courseID/:section/:term",
   (req, res) => {
@@ -90,7 +90,6 @@ app.post('/addNote',
       res.send("error in /addNote")
     }
 })
-
 
 app.get("/showNotes/:subject/:courseID/:section/:term",
    async (req,res, next) => {
