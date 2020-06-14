@@ -32,11 +32,9 @@ app.get("/", (req, res) => {
 
 app.get("/courses", homeController.showCourses);
 app.post("/courses", homeController.showSelectedCourses);
-
 app.post("/note", homeController.postedSignUpForm);
 app.get("/about", homeController.showAbout);
-//app.get("/addNote", homeController.showSignUp);
-//app.post("/addNote", homeController.postedSignUpForm);
+
 
 app.get("/jennifer", (req, res) => {
   res.render("jennifer");
@@ -55,9 +53,9 @@ const Note=require("./models/Note")
 
 app.get("/addNote",
   (req,res) =>{
-    res.render("addNote", req.params)
+    res.render("addNote");
   }
-)
+);
 //route to adding a note page
 app.get("/note/:subject/:courseID/:section/:term",
   (req, res) => {

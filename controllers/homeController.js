@@ -9,6 +9,7 @@ exports.showAbout = (req, res) => {
   res.render("about");
 };
 
+
 /*exports.showForum = (req, res) => {
   res.render("forum");
 };*/
