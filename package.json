@@ -4,6 +4,7 @@
   "description": "A site of sharing course notes with other students",
   "main": "main.js",
   "scripts": {
+      "start": "node ./bin/www",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Jon Wexler",
