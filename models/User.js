@@ -1,11 +1,15 @@
+
 'use strict';
-const mongoose = require( 'mongoose');
+const mongoose = require( 'mongoose' );
 const Schema = mongoose.Schema;
-const ObjectId = mongoose.Schema.Types.ObjectId;
 
-var userSchema = Schema({
-  name: String,
-  
-});
+//var userSchema = mongoose.Schema( {any:{}})
 
-module.exports = mongoose.model('User', userSchema);
+var userSchema = Schema( {
+  googleid: String,
+  googletoken: String,
+  googlename:String,
+  googleemail:String,
+} );
+
+module.exports = mongoose.model( 'User', userSchema );

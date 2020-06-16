@@ -14,6 +14,9 @@ const db = mongoose.connection;
   db.on('error',(x)=>console.log("connection error"+x))
   db.once('open',(x)=>console.log("We connected at "+new Date()+x))
 
+const authRouter = require('./routes/authentication');
+app.use(authRouter)
+
 app.set("view engine", "ejs");
 app.set("port", process.env.PORT || 3000);
 app.use(
@@ -123,3 +126,4 @@ app.use(errorController.internalServerError);
 app.listen(app.get("port"), () => {
   console.log(`Server running at http://localhost:${app.get("port")}`);
 });
+module.exports=app;
