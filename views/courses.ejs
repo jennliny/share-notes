@@ -72,7 +72,7 @@
                 <option value="LING">Linguistics</option>
                 <option value="MATH">Mathematics</option>
                 <option value="MERS">Medieval and Renaissance Studies</option>
-                <option> value="MUS">Music</option>
+                <option value="MUS">Music</option>
                 <option value="NBIO">Neuroscience and Biology</option>
                 <option value="NEJS">Near Eastern and Judaic Studies</option>
                 <option value="NEUR">Neuroscience</option>
@@ -126,11 +126,12 @@
           Name: <%= course.name %><br>
           Term: <%=course.term %><br>
           Section: <%=course.section %><br>
+          <% if (loggedIn) { %>
           <button type="button" class="btn btn-info"><a href="/note/<%= course.subject %>/<%= course.coursenum %>/<%=
               course.section %>/<%= course.term%>">Add a note</a></button>
           <button type="button" class="btn btn-info"><a href="/showNotes/<%= course.subject %>/<%= course.coursenum %>/<%=
               course.section %>/<%= course.term%>">Show notes</a></button>
-
+          <% } %>
         </li>
         <br>
       <% }) %>

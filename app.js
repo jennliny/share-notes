@@ -15,6 +15,7 @@ const db = mongoose.connection;
   db.once('open',(x)=>console.log("We connected at "+new Date()+x))
 
 const authRouter = require('./routes/authentication');
+const isLoggedIn = authRouter.isLoggedIn;
 app.use(authRouter)
 
 app.set("view engine", "ejs");
@@ -69,14 +70,15 @@ app.get("/note/:subject/:courseID/:section/:term",
 app.post('/addNote',
   async (req,res) => {
     try {
-      let author = req.body.author
+      let authorID = req.user._id
+      let author = req.user.googlename
       let note = req.body.note
       let subject = req.body.subject
       //let title = req.body.title
       let courseID = req.body.courseID
       let term= req.body.term
       let section = req.body.section
-      let newNote = new Note({author:author, note:note,
+      let newNote = new Note({authorID:authorID, author:author, note:note,
         subject:subject,  courseID:courseID,
         term: term, section: section})
       await newNote.save()
@@ -101,7 +103,6 @@ app.get("/showNotes/:subject/:courseID/:section/:term",
         section:req.params.section,
         term:req.params.term,
       }
-
       res.locals.notes =
           await Note.find(query)
       res.locals.subject = req.params.subject
@@ -118,6 +119,46 @@ app.get("/showNotes/:subject/:courseID/:section/:term",
      }
    });
 
+
+app.get('/remove/:subject/:courseID/:section/:term/:itemId',
+     isLoggedIn,
+     async (req, res, next) => {
+
+         await Note.remove({_id:req.params.itemId});
+         res.redirect(`/showNotes/${
+             req.params.subject}/${
+             req.params.courseID}/${
+             req.params.section}/${
+             req.params.term}`)
+   });
+
+//Routes for profile stuff
+app.get('/profile',
+       isLoggedIn,
+       (req,res) => {
+         res.render('profile')
+       })
+
+   app.get('/editProfile',
+       isLoggedIn,
+       (req,res) => res.render('editProfile'))
+
+   app.post('/editProfile',
+       isLoggedIn,
+       async (req,res,next) => {
+         try {
+           let username = req.body.username
+           let age = req.body.age
+           req.user.username = username
+
+           req.user.imageURL = req.body.imageURL
+           await req.user.save()
+           res.redirect('/profile')
+         } catch (error) {
+           next(error)
+         }
+
+       })
 
 
 app.use(errorController.pageNotFoundError);

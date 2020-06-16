@@ -15,6 +15,10 @@
           <tr><th>Notes</th><th><%= note.note%></th></tr>
           </table>
           <br>
+          <button type="button" class="btn btn-info"><a href="/note/<%= note.subject %>/<%= note.courseID %>/<%=
+              note.section %>/<%= note.term%>">Edit</a></button>
+          <button type="button" class="btn btn-info"><a href="/remove/<%= note.subject %>/<%= note.courseID %>/<%=
+              note.section %>/<%= note.term%>/<%= note.id %>">Delete</a></button>
         <% }) %>
   </div>
 </div>

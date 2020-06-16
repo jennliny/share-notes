@@ -11,8 +11,10 @@ const noteSchema = Schema( {
   title: String,
   courseID: String,
   section:String,
+  authorID: ObjectId,
   author: String,
   note: String,
+  
   //file:
 });
 
