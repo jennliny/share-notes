@@ -1,18 +1,8 @@
-<div class="jumbotron">
-  <h1>Your Profile</h1>
-  <p> this comes from the google authentication
-      and from the info you provide when you
-      edit this page!
-  </p>
-</div>
-<hr>
-<a href="editProfile">Edit</a>
-<hr>
 <div class="row">
-  <div class="col-sm-4">
+  <div class="col-sm-5">
     <img src="<%= user.imageURL %>" alt="image of user">
   </div>
-  <div class="col-sm-4">
+  <div class="col-sm-5">
       <table class="table table-bordered">
         <tbody>
           <tr>
@@ -27,10 +17,30 @@
             <td>username</td>
             <td><%= user.username %> </td>
           </tr>
-          
         </tbody>
+        <tfoot>
+          <tr>
+          <td>&nbsp;</td>
+          <td><a href="/editProfile">Edit Profile</a></td>
+          </tr>
+          </tfoot>
       </table>
   </div>
-  <div class="col-sm-4">
-  </div>
 </div>
+
+<!--<div class="container">
+  <div class="col-sm-12">
+    <ul>
+       notes.forEach(note => {%>
+        <li>
+          Subject: < note.subject %><br>
+          Course #: < note.courseID %><br>
+          Name: < note.title %><br>
+          Term: <note.term %><br>
+          Section: <note.section %><br>
+        </li>
+        <br>
+      < }) %>
+    </ul>
+  </div>
+</div>-->
