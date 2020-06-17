@@ -1,5 +1,5 @@
 "use strict";
-
+const Note=require("./models/Note");
 const express = require("express"),
   app = express(),
   homeController = require("./controllers/homeController"),
@@ -53,7 +53,7 @@ app.get("/Keyi", (req, res) => {
 });
 
 
-const Note=require("./models/Note")
+
 
 app.get("/addNote",
   (req,res) =>{
@@ -137,6 +137,35 @@ app.get("/showFilteredNotes",
   }
 
 );
+//Edit function
+app.get('/editNote/:itemId',
+    isLoggedIn,
+    async(req, res, next) => {
+      try {
+        console.log(req.params.itemId)
+        res.locals.note = await Note.findOne({_id:req.params.itemId})
+        console.log('in editNote')
+
+        res.render('editNote')
+      } catch (e) {
+        next(e)
+      }
+    }
+  )
+
+app.post('/editNote/:itemId',
+  isLoggedIn,
+  async(req, res, next) => {
+    try {
+      let doc = await Note.findOne({_id:req.params.itemId})
+      doc.note = req.body.note
+      await doc.save()
+      res.redirect(`/showNotes/${doc.subject}/${doc.courseID}/${doc.section}/${doc.term}`)
+    } catch (e) {
+      next(e)
+    }
+  }
+)
 
 app.get('/remove/:subject/:courseID/:section/:term/:itemId',
      isLoggedIn,
@@ -166,7 +195,6 @@ app.get('/profile',
        async (req,res,next) => {
          try {
            let username = req.body.username
-           let age = req.body.age
            req.user.username = username
 
            req.user.imageURL = req.body.imageURL
