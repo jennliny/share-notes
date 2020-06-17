@@ -95,7 +95,7 @@ app.post('/addNote',
 })
 
 app.get("/showNotes/:subject/:courseID/:section/:term",
-   async (req,res, next) => {
+   async (req,res,next) => {
      try {
        const query={
         subject:req.params.subject,
@@ -118,7 +118,25 @@ app.get("/showNotes/:subject/:courseID/:section/:term",
        next(e)
      }
    });
+app.get("/showFilteredNotes",
+  async(req, res,next) => {
+    try {
+      let authorID = req.user._id
+      const query={
+        authorID:authorID
+      }
+      res.locals.notes =
+          await Note.find(query)
+      res.render('showNotes')
+    } catch (e) {
+      console.dir(e)
+      console.log("Error:")
+      res.send("There was an error in /showFilteredNotes!")
+      next(e)
+    }
+  }
 
+);
 
 app.get('/remove/:subject/:courseID/:section/:term/:itemId',
      isLoggedIn,
