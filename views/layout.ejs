@@ -13,10 +13,7 @@
 
 
 	<div id="nav">
-		<div style='float:left;' >
-
 			<h1 style="text-align: center"id="title">Share Notes</h1>
-		</div>
 		<div style='float:right;  margin:10px;'>
 			<% if (!loggedIn) {%>
 			[<a href="/auth/google">
@@ -31,7 +28,7 @@
 			 | <a href="/profile">profile</a>
 			<% } %>
 		</div>
-		<div class="tabc">
+		<div><center>
 			<a href="/">
 				<span class="button">Home</span>
 			</a>
@@ -47,9 +44,11 @@
 			<a href="/about">
 				<span class="button">About</span>
 			</a>
-
+		</center>
 		</div>
 	</div>
+	
+	<!--dropdown list under user email-->
 	<!--<div class="dropdown">
 	        <button onclick="myFunction()" class="dropbtn">< user.googleemail %></button>
 	        <div id="myDropdown" class="dropdown-content">

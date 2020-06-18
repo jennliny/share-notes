@@ -7,10 +7,6 @@
     <p>Upload your notes and share them with other students!</p>
     <form action="/addNote" method="post">
       <div class="form-group">
-        <label for="author">Author</label>
-        <input type="text" name="author" value="" placeholder="Author Name" class=" form-control">
-      </div>
-      <div class="form-group">
         <label for="subject">Subject</label>
         <input type="text" name="subject" value="" placeholder="e.g. COSI" class=" form-control">
       </div>
@@ -36,14 +32,14 @@
 
       <!-- file including photos, pdf, or any type-->
       <div>
-        <label for="notes">Notes: </label>
-        <input type="text" name="note" value="" class=" form-control">
+      <h5>Note</h5>
+       <textarea name="note" rows="5" cols="40"></textarea>
       </div>
-
-      <!--<div class="form-group">
-        <label for="notes">Notes: </label>
-        <input type="file" class="form-control-file" name="note" value="">
-      </div>-->
+      <br>
+      <div class="form-group">
+        <label for="notes">Note in File: </label>
+        <input type="file" class="form-control-file" name="pdf" value="" accpet="file_extension">
+      </div>
 
       <br>
       <input class="button" type="submit" value="Submit">

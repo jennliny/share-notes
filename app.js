@@ -52,6 +52,10 @@ app.get("/Keyi", (req, res) => {
   res.render("Keyi");
 });
 
+app.get("/rating",(req,res)=>{
+  res.render("rating");
+});
+
 
 
 
