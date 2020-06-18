@@ -85,7 +85,7 @@ th, td {
 }
 
 /* Dropdown Button */
-.dropbtn {
+/*.dropbtn {
   background-color: #3498DB;
   color: white;
   padding: 16px;
@@ -95,18 +95,18 @@ th, td {
 }
 
 /* Dropdown button on hover & focus */
-.dropbtn:hover, .dropbtn:focus {
+/*.dropbtn:hover, .dropbtn:focus {
   background-color: #2980B9;
 }
 
 /* The container <div> - needed to position the dropdown content */
-.dropdown {
+/*.dropdown {
   position: relative;
   display: inline-block;
 }
 
 /* Dropdown Content (Hidden by Default) */
-.dropdown-content {
+/*.dropdown-content {
   display: none;
   position: absolute;
   background-color: #f1f1f1;
@@ -116,7 +116,7 @@ th, td {
 }
 
 /* Links inside the dropdown */
-.dropdown-content a {
+/*.dropdown-content a {
   color: black;
   padding: 12px 16px;
   text-decoration: none;
@@ -124,7 +124,74 @@ th, td {
 }
 
 /* Change color of dropdown links on hover */
-.dropdown-content a:hover {background-color: #ddd}
+/*.dropdown-content a:hover {background-color: #ddd}
 
 /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
 .show {display:block;}
+
+* {
+  box-sizing: border-box;
+}
+
+.heading {
+  font-size: 25px;
+}
+
+.fa {
+  font-size: 25px;
+}
+
+.checked {
+  color: orange;
+}
+
+/* Three column layout */
+.side {
+  float: left;
+  width: 20%;
+  margin-top: 10px;
+}
+
+.middle {
+  float: left;
+  width: 60%;
+  margin-top: 10px;
+}
+
+/* Place text to the right */
+.right {
+  text-align: right;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* The bar container */
+.bar-container {
+  width: 100%;
+  background-color: #f1f1f1;
+  text-align: center;
+  color: white;
+}
+
+/* Individual bars */
+.bar-5 {width: 60%; height: 18px; background-color: #4CAF50;}
+.bar-4 {width: 30%; height: 18px; background-color: #2196F3;}
+.bar-3 {width: 10%; height: 18px; background-color: #00bcd4;}
+.bar-2 {width: 50%; height: 18px; background-color: #ff9800;}
+.bar-1 {width: 15%; height: 18px; background-color: #f44336;}
+
+/* Responsive layout - make the columns stack on top of each other instead of next to each other */
+@media (max-width: 300px) {
+  .side, .middle {
+    width: 80%;
+  }
+  /* Hide the right column on small screens */
+  .right {
+    display: none;
+  }
+}
