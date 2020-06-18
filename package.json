@@ -20,5 +20,14 @@
     "mongoose": "^5.9.19",
     "passport": "^0.4.1",
     "passport-google-oauth": "^2.0.0"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jennliny/share-notes.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jennliny/share-notes/issues"
+  },
+  "homepage": "https://github.com/jennliny/share-notes#readme"
 }
