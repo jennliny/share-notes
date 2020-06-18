@@ -78,12 +78,13 @@ app.post('/addNote',
       let author = req.user.googlename
       let note = req.body.note
       let subject = req.body.subject
+      let createdAt = new Date()
       //let title = req.body.title
       let courseID = req.body.courseID
       let term= req.body.term
       let section = req.body.section
       let newNote = new Note({authorID:authorID, author:author, note:note,
-        subject:subject,  courseID:courseID,
+        subject:subject,  courseID:courseID, createdAt:createdAt,
         term: term, section: section})
       await newNote.save()
       res.redirect(`/showNotes/${
@@ -113,6 +114,9 @@ app.get("/showNotes/:subject/:courseID/:section/:term",
       res.locals.courseID = req.params.courseID
       res.locals.section = req.params.section
       res.locals.term = req.params.term
+      console.log(res.locals.notes)
+      res.locals.notes.sort((a,b) => b.createdAt - a.createdAt)
+      console.log(res.locals.notes)
        res.render('showNotes')
      }
      catch(e){
@@ -131,6 +135,7 @@ app.get("/showFilteredNotes",
       }
       res.locals.notes =
           await Note.find(query)
+      res.locals.notes.sort((a,b) => b.createdAt - a.createdAt)
       res.render('showNotes')
     } catch (e) {
       console.dir(e)

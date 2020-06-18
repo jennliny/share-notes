@@ -14,7 +14,7 @@ const noteSchema = Schema( {
   authorID: ObjectId,
   author: String,
   note: String,
-  
+  createdAt: Date
   //file:
 });
 
