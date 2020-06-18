@@ -36,6 +36,20 @@ exports.showSelectedCourses = (req, res) => {
       ))
 
 
+    selected_courses.sort(
+        (c1,c2) => {
+          let a = c1.name.toLowerCase(),
+              b = c2.name.toLowerCase();
+              if(a<b){
+                return -1;
+              }
+              if(a>b){
+                return 1;
+              }
+              return 0;
+        }
+      )
+      console.log(selected_courses)
   res.render("courses", {
     courses: selected_courses,
     term: req.body.term

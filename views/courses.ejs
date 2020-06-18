@@ -26,7 +26,7 @@
                 <option value="CAST">Creativity, the Arts and Social Transformation</option>
                 <option value="CBIO">Chemical Biology</option>
                 <option value="CHEM">Chemistry</option>
-                <option value="CHIN">Chiness</option>
+                <option value="CHIN">Chinese</option>
                 <option value="CHSC">Chemical Science</option>
                 <option value="CLAS">Classical Studies</option>
                 <option value="COMH">Comparative Humanities</option>
@@ -118,14 +118,17 @@
 
 <div class="container">
   <div class="col-sm-12">
+
     <ul>
       <% courses.forEach(course => {%>
         <li>
+          Course title: <b><%= course.name %></b> <br>
           Subject: <%= course.subject %><br>
           Course #: <%= course.coursenum %><br>
-          Name: <%= course.name %><br>
-          Term: <%=course.term %><br>
           Section: <%=course.section %><br>
+          Term: <%=course.term %><br>
+
+
           <% if (loggedIn) { %>
           <button type="button" class="btn btn-info"><a href="/note/<%= course.subject %>/<%= course.coursenum %>/<%=
               course.section %>/<%= course.term%>">Add a note</a></button>
