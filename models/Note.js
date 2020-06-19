@@ -16,9 +16,10 @@ const noteSchema = Schema( {
   section:String,
   authorID: ObjectId,
   author: String,
+  authorEmail: String,
   note: String,
   createdAt: Date
-  
+
   //file:
 });
 

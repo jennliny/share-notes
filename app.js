@@ -76,6 +76,7 @@ app.post('/addNote',
     try {
       let authorID = req.user._id
       let author = req.user.googlename
+      let authorEmail = req.user.googleemail
       let note = req.body.note
       let subject = req.body.subject
       let createdAt = new Date()
@@ -84,7 +85,7 @@ app.post('/addNote',
       let term= req.body.term
       let section = req.body.section
       let newNote = new Note({authorID:authorID, author:author, note:note,
-        subject:subject,  courseID:courseID, createdAt:createdAt,
+        subject:subject,  courseID:courseID, createdAt:createdAt, authorEmail:authorEmail,
         term: term, section: section})
       await newNote.save()
       res.redirect(`/showNotes/${
