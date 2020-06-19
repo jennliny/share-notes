@@ -6,7 +6,10 @@ const ObjectId = mongoose.Schema.Types.ObjectId;
 
 
 const noteSchema = Schema( {
-  term: String,
+  term: {
+    type:String,
+    required:true
+  },
   subject: String,
   title: String,
   courseID: String,
@@ -15,6 +18,7 @@ const noteSchema = Schema( {
   author: String,
   note: String,
   createdAt: Date
+  
   //file:
 });
 
