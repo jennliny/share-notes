@@ -20,12 +20,20 @@
 				log in
 			</a>]
 			<% } else  { %>
-				<%= user.googleemail %>
-				 |
-			<a href="/logout">
+				<div class="dropdown">
+				        <button onclick="myFunction()" class="dropbtn"><%= user.googleemail %></button>
+				        <div id="myDropdown" class="dropdown-content">
+				          <a href="/profile">Profile</a>
+				          <a href="/editProfile">Edit Profile</a>
+				          <a href="/logout">Logout</a>
+				        </div>
+				      </div>
+				<!--<%= user.googleemail %>-->
+				 <!--|-->
+			<!--<a href="/logout">
 				log out
 			</a>
-			 | <a href="/profile">profile</a>
+			 | <a href="/profile">profile</a>-->
 			<% } %>
 		</div>
 		<div><center>
@@ -47,19 +55,12 @@
 		</center>
 		</div>
 	</div>
-	
-	<!--dropdown list under user email-->
-	<!--<div class="dropdown">
-	        <button onclick="myFunction()" class="dropbtn">< user.googleemail %></button>
-	        <div id="myDropdown" class="dropdown-content">
-	          <a href="/profile">Profile</a>
-	          <a href="/editProfile">Edit Profile</a>
-	          <a href="/logout">Logout</a>
-	        </div>
-	      </div>-->
 
-
-
+<script>
+				function myFunction() {
+					 document.getElementById("myDropdown").classList.toggle("show");
+				 }
+</script>
 
 	<%- body %>
 
