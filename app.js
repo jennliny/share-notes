@@ -167,6 +167,7 @@ app.post('/editNote/:itemId',
   async(req, res, next) => {
     try {
       let doc = await Note.findOne({_id:req.params.itemId})
+      doc.createdAt = new Date()
       doc.note = req.body.note
       await doc.save()
       res.redirect(`/showNotes/${doc.subject}/${doc.courseID}/${doc.section}/${doc.term}`)

@@ -13,9 +13,11 @@
               <h6 class="card-subtitle mb-2 text-muted">Created at <%= note.createdAt %></h6>
               <p class="card-text"><%= note.subject %> <%= note.courseID %> <%= note.section %> <%= note.term %></p>
               <p class="card-text"><%= note.note%></p>
+                <% if (note.authorID.equals(user._id)){ %>
                   <a href="/editNote/<%= note._id %>" class="card-link">Edit</a>
                   <a href="/remove/<%= note.subject %>/<%= note.courseID %>/<%=
                       note.section %>/<%= note.term%>/<%= note._id %>" class="card-link">Delete</a>
+                <% } %>
                   <a href="/rating" class="card-link">Rating</a>
 
 
