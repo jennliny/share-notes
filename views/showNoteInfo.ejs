@@ -1,0 +1,25 @@
+<div class="container">
+  <h2><%= note.subject %> <%= note.courseID %> <%= note.section %> <%= note.term %></h2>
+  <h3>created by <%= note.author %></h3>
+  <p>Created at <%= note.createdAt %></p>
+  <br><h3>Notes: </h3><br>
+  <p><%= note.note %> </p>
+  <br><br><br>
+</div>
+<div class="container">
+  <h3>Comments / Ratings: </h3><br>
+  <% comments.forEach(comment => {%>
+    <div class="card" id="noteInfoCard">
+      <div class="card-body">
+        <h5 class="card-title" style="color:blue"><%=comment.user%></h5>  
+        <p class="card-text"><%= comment.comment %></p>
+        <p class="card-text text-muted"><i>[Created at <%= comment.createdAt %>]</i>  </p>
+      </div>
+    </div>
+    <p>
+       <br>
+
+
+    </p>
+  <% }) %>
+</div>

@@ -49,7 +49,7 @@ exports.showSelectedCourses = (req, res) => {
               return 0;
         }
       )
-      console.log(selected_courses)
+      //console.log(selected_courses)
   res.render("courses", {
     courses: selected_courses,
     term: req.body.term

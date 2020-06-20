@@ -53,25 +53,39 @@ app.get("/Keyi", (req, res) => {
   res.render("Keyi");
 });
 
-app.get("/rating",(req,res)=>{
-  res.render("rating");
+
+app.get("/rating/:itemId",
+  isLoggedIn,
+  async(req, res, next) => {
+    res.locals.note = await Note.findOne({_id:req.params.itemId})
+    console.log(req.params.itemId)
+    res.render("rating");
 });
 
-
-/*app.post("/rating",(req,res)=>{
-  async(req,res)=>{
+app.post("/addRating/:itemId",
+  async(req,res, next)=>{
     try{
-      let comment=comment
-      let rate=rate
+      res.locals.note = await Note.findOne({_id:req.params.itemId})
+      let comment = req.body.comment
+      //let rate= req.body.rate
       let createdAt=new Date()
-      let user=req.user.googlename
-      let note=req.note_id
-      let newComment=new Comment({user:user,note:note,createdAt:createdAt, comment:comment,rate:rate})
-      await newComment.save()
-    }
-  }
-});
+      let user = req.user.googlename
+      let note = res.locals.note
+      let newComment=new Comment({user:user,note:note,createdAt:createdAt, comment:comment
+        //,rate:rate
+      })
 
+      await newComment.save()
+      console.log(newComment);
+      res.redirect(`/showNoteInfo/${
+          req.params.itemId}/`)
+    }catch(e){
+      console.dir(e);
+      res.send("There was an error in /addRating")
+      next(e)
+    }
+});
+/*
 var rate=document.getElementById('rates').value;
 var rate_value;
 if (document.getElementById('star5').checked) {
@@ -88,14 +102,14 @@ if (document.getElementById('star5').checked) {
   rate_value=document.getElementById('rate').value;
 }*/
 
-
+/*
 var count = 0;
 $(document).ready(function(){
     $("form#Submit").submit(function(){
              count++;
         });
 });
-
+*/
 
 app.get("/addNote",
   (req,res) =>{
@@ -153,9 +167,8 @@ app.get("/showNotes/:subject/:courseID/:section/:term",
       res.locals.courseID = req.params.courseID
       res.locals.section = req.params.section
       res.locals.term = req.params.term
-      console.log(res.locals.notes)
       res.locals.notes.sort((a,b) => b.createdAt - a.createdAt)
-      console.log(res.locals.notes)
+      //console.log(res.locals.notes)
        res.render('showNotes')
      }
      catch(e){
@@ -186,15 +199,28 @@ app.get("/showFilteredNotes",
   }
 
 );
+
+app.get("/showNoteInfo/:itemId",
+  async(req, res, next) => {
+    try {
+      console.log(req.params.itemId)
+      res.locals.note = await Note.findOne({_id:req.params.itemId})
+      const query={
+        note:req.params.itemId
+      }
+      res.locals.comments = await Comment.find(query)
+      res.render('showNoteInfo')
+    } catch (e) {
+      next(e)
+    }
+  }
+);
 //Edit function
 app.get('/editNote/:itemId',
     isLoggedIn,
     async(req, res, next) => {
       try {
-        console.log(req.params.itemId)
         res.locals.note = await Note.findOne({_id:req.params.itemId})
-        console.log('in editNote')
-
         res.render('editNote')
       } catch (e) {
         next(e)
@@ -216,11 +242,10 @@ app.post('/editNote/:itemId',
     }
   }
 )
-
+//Delete route
 app.get('/remove/:subject/:courseID/:section/:term/:itemId',
      isLoggedIn,
      async (req, res, next) => {
-
          await Note.remove({_id:req.params.itemId});
          res.redirect(`/showNotes/${
              req.params.subject}/${
