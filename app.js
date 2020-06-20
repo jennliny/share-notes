@@ -89,7 +89,12 @@ if (document.getElementById('star5').checked) {
 }*/
 
 
-
+var count = 0;
+$(document).ready(function(){
+    $("form#Submit").submit(function(){
+             count++;
+        });
+});
 
 
 app.get("/addNote",
