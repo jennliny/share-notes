@@ -1,5 +1,6 @@
 "use strict";
 const Note=require("./models/Note");
+const Comment=require("./models/Comment");
 const express = require("express"),
   app = express(),
   homeController = require("./controllers/homeController"),
@@ -55,6 +56,38 @@ app.get("/Keyi", (req, res) => {
 app.get("/rating",(req,res)=>{
   res.render("rating");
 });
+
+
+/*app.post("/rating",(req,res)=>{
+  async(req,res)=>{
+    try{
+      let comment=comment
+      let rate=rate
+      let createdAt=new Date()
+      let user=req.user.googlename
+      let note=req.note_id
+      let newComment=new Comment({user:user,note:note,createdAt:createdAt, comment:comment,rate:rate})
+      await newComment.save()
+    }
+  }
+});
+
+var rate=document.getElementById('rates').value;
+var rate_value;
+if (document.getElementById('star5').checked) {
+  rate_value = document.getElementById('rate').value;
+}elseif(document.getElementById('star4').checked){
+  rate_value=document.getElementById('rate').value;
+}elseif(document.getElementById('star3').checked){
+  rate_value=document.getElementById('rate').value;
+}elseif(document.getElementById('star3').checked){
+  rate_value=document.getElementById('rate').value;
+}elseif(document.getElementById('star2').checked){
+  rate_value=document.getElementById('rate').value;
+}elseif(document.getElementById('star1').checked){
+  rate_value=document.getElementById('rate').value;
+}*/
+
 
 
 
@@ -127,6 +160,7 @@ app.get("/showNotes/:subject/:courseID/:section/:term",
        next(e)
      }
    });
+
 app.get("/showFilteredNotes",
   async(req, res,next) => {
     try {
@@ -218,8 +252,6 @@ app.get('/profile',
        })
 
 
-
-       // Close the dropdown menu if the user clicks outside of it
 app.onclick = function(event) {
    if (!event.target.matches('.dropbtn')) {
       var dropdowns = document.getElementsByClassName("dropdown-content");
