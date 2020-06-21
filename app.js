@@ -70,11 +70,11 @@ app.post("/addRating/:itemId",
       //let rate= req.body.rate
       let createdAt=new Date()
       let user = req.user.googlename
+      let userId = req.user._id
       let note = res.locals.note
-      let newComment=new Comment({user:user,note:note,createdAt:createdAt, comment:comment
+      let newComment=new Comment({user:user,userId:userId,note:note,createdAt:createdAt, comment:comment
         //,rate:rate
       })
-
       await newComment.save()
       console.log(newComment);
       res.redirect(`/showNoteInfo/${
@@ -85,6 +85,16 @@ app.post("/addRating/:itemId",
       next(e)
     }
 });
+
+//Delete route for comments
+app.get('/removeComment/:noteId/:itemId',
+     isLoggedIn,
+     async (req, res, next) => {
+         await Comment.remove({_id:req.params.itemId});
+         res.redirect(`/showNoteInfo/${
+             req.params.noteId}`)
+   });
+
 /*
 var rate=document.getElementById('rates').value;
 var rate_value;

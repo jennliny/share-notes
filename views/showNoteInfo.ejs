@@ -11,15 +11,19 @@
   <% comments.forEach(comment => {%>
     <div class="card" id="noteInfoCard">
       <div class="card-body">
-        <h5 class="card-title" style="color:blue"><%=comment.user%></h5>  
+        <h5 class="card-title" style="color:blue"><%=comment.user%></h5>
         <p class="card-text"><%= comment.comment %></p>
-        <p class="card-text text-muted"><i>[Created at <%= comment.createdAt %>]</i>  </p>
+        <p class="card-text text-muted"><i>[Created at <%= comment.createdAt %>]</i>
+        </p>
       </div>
+      <% if (comment.userId.equals(user._id)){ %>
+        <div class="card-body">
+          <a href="/removeComment/<%= note._id%>/<%= comment._id %>" class="card-link">[remove]</a>
+        </div>
+      <% } %>
     </div>
-    <p>
        <br>
 
 
-    </p>
   <% }) %>
 </div>
