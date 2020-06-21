@@ -1,7 +1,6 @@
 "use strict";
 const Note=require("./models/Note");
 const Comment=require("./models/Comment");
-const Socket=require("./controllers/chatController")(io);
 const express = require("express"),
   app = express(),
   homeController = require("./controllers/homeController"),
@@ -31,11 +30,11 @@ app.use(express.json());
 app.use(layouts);
 app.use(express.static("public"));
 
-const server = app.listen(app.get("port"), () => {
+/*const server = app.listen(app.get("port"), () => {
 console.log(`Server running at http://localhost:
 ${ app.get("port") }`);
 }),
-io = require("socket.io")(server);
+io = require("socket.io")(server);*/
 
 app.get("/", (req, res) => {
   res.render("index");
