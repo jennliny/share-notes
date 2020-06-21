@@ -10,6 +10,10 @@ exports.showAbout = (req, res) => {
 };
 
 
+exports.chat= (req, res) => {
+res.render("chat");
+};
+
 /*exports.showForum = (req, res) => {
   res.render("forum");
 };*/
