@@ -13,8 +13,13 @@
       <div class="card-body">
         <h5 class="card-title" style="color:blue"><%=comment.user%></h5>
         <p class="card-text"><%= comment.comment %></p>
+<<<<<<< HEAD
         <p class="card-text text-muted"><i>[Created at <%= comment.createdAt %>]</i>
         </p>
+=======
+        <p class="card-text"><%=comment.rate %> </p>
+        <p class="card-text text-muted"><i>[Created at <%= comment.createdAt %>]</i>  </p>
+>>>>>>> 7dca3182199299e18b58cf61b5d02b54cbe5f3d7
       </div>
       <% if (comment.userId.equals(user._id)){ %>
         <div class="card-body">

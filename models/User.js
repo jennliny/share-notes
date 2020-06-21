@@ -12,6 +12,7 @@ var userSchema = Schema( {
   googleemail:String,
   username:String,
   imageURL: String,
+  favorite:[{type:Schema.Types.ObjectId, ref:"Note"}]
 } );
 
 module.exports = mongoose.model( 'User', userSchema );
