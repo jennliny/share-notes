@@ -11,8 +11,9 @@
   <% comments.forEach(comment => {%>
     <div class="card" id="noteInfoCard">
       <div class="card-body">
-        <h5 class="card-title" style="color:blue"><%=comment.user%></h5>  
+        <h5 class="card-title" style="color:blue"><%=comment.user%></h5>
         <p class="card-text"><%= comment.comment %></p>
+        <p class="card-text"><%=comment.rate %> </p>
         <p class="card-text text-muted"><i>[Created at <%= comment.createdAt %>]</i>  </p>
       </div>
     </div>

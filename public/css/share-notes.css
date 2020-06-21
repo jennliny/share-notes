@@ -141,7 +141,7 @@ Dropdown Button
 }
 
 /* Change color of dropdown links on hover */
-.dropdown-content a:hover {background-color: #7CB9E8}
+.dropdown-content a:hover {background-color: #FFFFFF}
 
 /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
 .show {display:block;}
