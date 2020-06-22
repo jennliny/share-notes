@@ -11,7 +11,7 @@ const commentSchema = Schema( {
   note: {type:Schema.Types.ObjectId, ref:"Note"},
   createdAt: Date,
   comment:String,
-  rate:Number
+  rate:String
 });
 
 module.exports = mongoose.model('Comment', commentSchema);
