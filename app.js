@@ -1,6 +1,12 @@
 "use strict";
+const bodyParser = require('body-parser');
+
+
 const Note=require("./models/Note");
 const Comment=require("./models/Comment");
+const multer = require('multer');
+const path = require('path');
+const helpers = require('./helpers');
 const express = require("express"),
   app = express(),
   homeController = require("./controllers/homeController"),
@@ -18,7 +24,6 @@ const db = mongoose.connection;
 const authRouter = require('./routes/authentication');
 const isLoggedIn = authRouter.isLoggedIn;
 app.use(authRouter)
-
 app.set("view engine", "ejs");
 app.set("port", process.env.PORT || 3000);
 app.use(
@@ -29,6 +34,16 @@ app.use(
 app.use(express.json());
 app.use(layouts);
 app.use(express.static("public"));
+
+const storage = multer.diskStorage({
+  destination: './public/uploads/images',
+  filename: function(req, file, cb){
+    cb(null, file.fieldname + '-' + Date.now() + '-' + path.extname(file.originalname));
+  }
+});
+
+const upload = multer({storage: storage});
+
 
 /*const server = app.listen(app.get("port"), () => {
 console.log(`Server running at http://localhost:
@@ -69,19 +84,32 @@ app.get("/rating/:itemId",
     res.render("rating");
 });
 
+app.use(bodyParser.json()); // to support JSON bodies
+app.use(bodyParser.urlencoded({ extended: true })); // to support URL-encoded bodies
 app.post("/addRating/:itemId",
   async(req,res, next)=>{
     try{
       res.locals.note = await Note.findOne({_id:req.params.itemId})
       let comment = req.body.comment
-      //let rate= req.body.rate.value
+<<<<<<< HEAD
+      //let rate= req.body.rate
+=======
+      let rate= req.body.rate
+      //console.log(req.body.value)
+>>>>>>> 92c894c5b78980181b7e0ec6c6fdf99384133bef
       let createdAt=new Date()
       let user = req.user.googlename
       let userId = req.user._id
       let note = res.locals.note
+<<<<<<< HEAD
       let newComment=new Comment({user:user,userId:userId,note:note,createdAt:createdAt, comment:comment
-        //rate:rate
+        //,rate:rate
+=======
+      let newComment=new Comment({user:user,userId:userId,note:note,createdAt:createdAt, comment:comment,
+        rate:rate
+>>>>>>> 92c894c5b78980181b7e0ec6c6fdf99384133bef
       })
+      console.log(req.user)
       await newComment.save()
       console.log(newComment);
       res.redirect(`/showNoteInfo/${
@@ -282,14 +310,17 @@ app.get('/profile',
        isLoggedIn,
        (req,res) => res.render('editProfile'))
 
-   app.post('/editProfile',
+   app.post('/editProfile', upload.single('profile_pic'),
        isLoggedIn,
        async (req,res,next) => {
          try {
+           console.log(req.file);
+           console.log(req.file.filename);
+
            let username = req.body.username
            req.user.username = username
-
-           req.user.imageURL = req.body.imageURL
+           req.user.imageURL = req.body.imageURL;
+           req.user.imageFileName = req.file.filename;
            await req.user.save()
            res.redirect('/profile')
          } catch (error) {
