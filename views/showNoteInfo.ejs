@@ -17,11 +17,11 @@
         </p>
         <p class="card-text"><%=comment.rate %> </p>
       </div>
-      <%% if (comment.userId.equals(user._id)){ %>
-        <!-- <div class="card-body">
-          <a href="/removeComment/<%%= note._id%>/<%%= comment._id %>" class="card-link">[remove]</a>
-        </div> -->
-      <%% } %> %>
+      <% if (comment.userId.equals(user._id)){ %>
+        <div class="card-body">
+          <a href="/removeComment/<%= note._id%>/<%= comment._id %>" class="card-link">[remove]</a>
+        </div>
+      <% } %> %>
     </div>
        <br>
 
