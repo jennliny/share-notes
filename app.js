@@ -4,7 +4,6 @@ const Note=require("./models/Note");
 const Comment=require("./models/Comment");
 const multer = require('multer');
 const path = require('path');
-const helpers = require('./helpers');
 const express = require("express"),
   app = express(),
   homeController = require("./controllers/homeController"),
@@ -109,14 +108,6 @@ app.post("/addRating/:itemId",
     }
 });
 
-//Delete route for comments
-app.get('/removeComment/:noteId/:itemId',
-     isLoggedIn,
-     async (req, res, next) => {
-         await Comment.remove({_id:req.params.itemId});
-         res.redirect(`/showNoteInfo/${
-             req.params.noteId}`)
-   });
 
 /*
 var rate=document.getElementById('rates').value;
