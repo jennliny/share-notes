@@ -83,8 +83,8 @@ app.get("/rating/:itemId",
     res.render("rating");
 });
 
-app.user(bodyParser.json());
-app.user(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
 app.post("/addRating/:itemId",
   async(req,res, next)=>{
     try{
