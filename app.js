@@ -118,22 +118,7 @@ app.get('/removeComment/:noteId/:itemId',
              req.params.noteId}`)
    });
 
-/*
-var rate=document.getElementById('rates').value;
-var rate_value;
-if (document.getElementById('star5').checked) {
-  rate_value = document.getElementById('rate').value;
-}elseif(document.getElementById('star4').checked){
-  rate_value=document.getElementById('rate').value;
-}elseif(document.getElementById('star3').checked){
-  rate_value=document.getElementById('rate').value;
-}elseif(document.getElementById('star3').checked){
-  rate_value=document.getElementById('rate').value;
-}elseif(document.getElementById('star2').checked){
-  rate_value=document.getElementById('rate').value;
-}elseif(document.getElementById('star1').checked){
-  rate_value=document.getElementById('rate').value;
-}*/
+
 
 /*
 var count = 0;
@@ -213,6 +198,36 @@ app.get("/showNotes/:subject/:courseID/:section/:term",
    });
 
 app.get("/showFilteredNotes",
+  async(req, res,next) => {
+    try {
+      let authorID = req.user._id
+      const query={
+        authorID:authorID
+      }
+      res.locals.notes =
+          await Note.find(query)
+      res.locals.notes.sort((a,b) => b.createdAt - a.createdAt)
+      res.render('showNotes')
+    } catch (e) {
+      console.dir(e)
+      console.log("Error:")
+      res.send("There was an error in /showFilteredNotes!")
+      next(e)
+    }
+  }
+
+);
+
+app.post("/addToFavorite/:itemId",
+  async(req,res,next)=>{
+    try{
+      req.user.favorite  = req.params.itemId;
+
+    }
+  }
+)
+
+app.get("/showFavorites",
   async(req, res,next) => {
     try {
       let authorID = req.user._id

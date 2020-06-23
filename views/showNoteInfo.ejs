@@ -3,6 +3,12 @@
   <h2><%= note.subject %> <%= note.courseID %> <%= note.section %> <%= note.term %></h2>
   <h3>Created by <%= note.author %></h3>
   <p>Created at <%= note.createdAt %></p>
+  <!--<input type="radio" id="add" name="favorite" value="" />
+  <label for="add" title="text">Add to Your Favorites</label>-->
+<form action="/addToFavorite/<%=note._id%>" method="post">
+    <input type="submit" name="" value=""><span class="button">Add to favorite</span></input>
+</form>
+
   <br><h3>Notes: </h3><br>
   <p><%= note.note %> </p>
   <br><br><br>
