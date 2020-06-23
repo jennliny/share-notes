@@ -1,9 +1,9 @@
 "use strict";
-const bodyParser = require('body-parser');
 const Note=require("./models/Note");
 const Comment=require("./models/Comment");
 const multer = require('multer');
 const path = require('path');
+const helpers = require('helpers');
 const express = require("express"),
   app = express(),
   homeController = require("./controllers/homeController"),
@@ -21,6 +21,7 @@ const db = mongoose.connection;
 const authRouter = require('./routes/authentication');
 const isLoggedIn = authRouter.isLoggedIn;
 app.use(authRouter)
+
 app.set("view engine", "ejs");
 app.set("port", process.env.PORT || 3000);
 app.use(
@@ -32,14 +33,15 @@ app.use(express.json());
 app.use(layouts);
 app.use(express.static("public"));
 
-/*const storage = multer.diskStorage({
-  destination: './public/uploads/',
+const storage = multer.diskStorage({
+  destination: './public/uploads',
   filename: function(req, file, cb){
     cb(null, file.fieldname + '-' + Date.now() + '-' + path.extname(file.originalname));
   }
 });
 
-const upload = multer({storage: storage});*/
+const upload = multer({storage: storage});
+
 
 /*const server = app.listen(app.get("port"), () => {
 console.log(`Server running at http://localhost:
@@ -72,9 +74,6 @@ app.get("/Keyi", (req, res) => {
 
 app.get("/chat",homeController.chat);
 
-
-app.use(bodyParser.json()); // to support JSON bodies
-app.use(bodyParser.urlencoded({ extended: true })); // to support URL-encoded bodies
 app.get("/rating/:itemId",
   isLoggedIn,
   async(req, res, next) => {
@@ -88,13 +87,13 @@ app.post("/addRating/:itemId",
     try{
       res.locals.note = await Note.findOne({_id:req.params.itemId})
       let comment = req.body.comment
-      let rate= req.body.rate
+      //let rate= req.body.rate
       let createdAt=new Date()
       let user = req.user.googlename
       let userId = req.user._id
       let note = res.locals.note
-      let newComment=new Comment({user:user,userId:userId,note:note,createdAt:createdAt, comment:comment,
-        rate:rate
+      let newComment=new Comment({user:user,userId:userId,note:note,createdAt:createdAt, comment:comment
+        //,rate:rate
       })
       await newComment.save()
       console.log(newComment);
@@ -107,6 +106,31 @@ app.post("/addRating/:itemId",
     }
 });
 
+//Delete route for comments
+app.get('/removeComment/:noteId/:itemId',
+     isLoggedIn,
+     async (req, res, next) => {
+         await Comment.remove({_id:req.params.itemId});
+         res.redirect(`/showNoteInfo/${
+             req.params.noteId}`)
+   });
+
+/*
+var rate=document.getElementById('rates').value;
+var rate_value;
+if (document.getElementById('star5').checked) {
+  rate_value = document.getElementById('rate').value;
+}elseif(document.getElementById('star4').checked){
+  rate_value=document.getElementById('rate').value;
+}elseif(document.getElementById('star3').checked){
+  rate_value=document.getElementById('rate').value;
+}elseif(document.getElementById('star3').checked){
+  rate_value=document.getElementById('rate').value;
+}elseif(document.getElementById('star2').checked){
+  rate_value=document.getElementById('rate').value;
+}elseif(document.getElementById('star1').checked){
+  rate_value=document.getElementById('rate').value;
+}*/
 
 /*
 var count = 0;
@@ -271,24 +295,32 @@ app.get('/profile',
        isLoggedIn,
        (req,res) => res.render('editProfile'))
 
-  /* app.post('/editProfile', upload.single('profile_pic'),
-       isLoggedIn,
-       async (req,res,next) => {
-         try {
-           console.log(req.file);
-           console.log(req.file.filename);
+       app.post('/editProfile', upload.single('profile_pic'),
+           isLoggedIn,
+           async (req,res,next) => {
+             try {
+               if(req.file === undefined  ){
+                 if (req.user.imageFileName === "") {
+                   req.user.imageFileName = 'blank-profile-picture.png';
+                 }
+               }else {
+                 req.user.imageFileName = req.file.filename;
+               }
+               console.log(req.user.imageFileName);
 
-           let username = req.body.username
-           req.user.username = username
-           req.user.imageURL = req.body.imageURL;
-           req.user.imageFileName = req.file.filename;
-           await req.user.save()
-           res.redirect('/profile')
-         } catch (error) {
-           next(error)
-         }
 
-       })*/
+               let username = req.body.username
+               req.user.username = username
+               req.user.imageURL = req.body.imageURL;
+
+               await req.user.save()
+               console.log(req.user);
+               res.redirect('/profile')
+             } catch (error) {
+               next(error)
+             }
+
+           })
 
 
 app.onclick = function(event) {

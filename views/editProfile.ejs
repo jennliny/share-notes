@@ -1,38 +1,28 @@
-<div class="row">
+<div class="container">
+  <form method="post" action="editProfile" enctype="multipart/form-data">
   <div class="col-sm-4">
+    <center>
+      <label>Select your profile picture: </label>
+      <input type="file" name="profile_pic">
+    </center>
   </div>
-  <form method="post" action="editProfile">
-    <div class="col-sm-4">
-        <table class="table table-bordered">
-          <tbody>
-            <tr>
-              <td>googlename</td>
-              <td><%= user.googlename %></td>
-            </tr>
-            <tr>
-              <td>googleemail</td>
-              <td><%= user.googleemail %></td>
-            </tr>
-            <tr>
-              <td>username</td>
-              <td>
-                <input type="text" name="username"
-                   value="<%= user.username %>">
-              </td>
-            </tr>
-            <tr>
-              <td>imageURL</td>
-              <td>
-                <input type="text" name="imageURL"
-                   value="<%= user.imageURL %>">
-              </td>
-            </tr>
-          </tbody>
-        </table>
+
+    <div class="col-sm-6">
+      <h3><%= user.googlename %></h3>
+      <h4><%= user.googleemail %></h4>
+      <p>Change username: </p>
+      <input type="text" name="username"
+         value="<%= user.username %>"><br>
+      <p>Change image by URL: </p>
+      <input type="text" name="imageURL"
+         value="<%= user.imageURL %>">
+    </div>
+    <div class="col-sm-2">
+      <center><input class="btn btn-lg btn-info" type="submit" value="Update Profile"></center>
     </div>
 
-  <div class="col-sm-4">
-  </div>
+
+  </form>
+
+
 </div>
-<center><input class="btn btn-lg btn-info" type="submit" value="Update Profile"></center>
-</form>
