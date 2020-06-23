@@ -13,7 +13,7 @@ var userSchema = Schema( {
   username:String,
   imageURL: String,
   imageFileName: String,
-  favorite:[{type:Schema.Types.ObjectId, ref:"Note"}]
+  favorites:[{type:Schema.Types.ObjectId, ref:"Note"}]
 } );
 
 module.exports = mongoose.model( 'User', userSchema );

@@ -221,8 +221,15 @@ app.get("/showFilteredNotes",
 app.post("/addToFavorite/:itemId",
   async(req,res,next)=>{
     try{
-      req.user.favorite  = req.params.itemId;
-
+      res.locals.note = await Note.findOne({_id:req.params.itemId})
+      console.log(res.locals.note)
+      req.user.favorites.push(res.locals.note)
+      await req.user.save()
+      console.log(req.user.favorites)
+      res.redirect(`/showNoteInfo/${
+          req.params.itemId}`)
+    }catch(e){
+      res.send("There was an error in /addToFavorite")
     }
   }
 )
@@ -230,18 +237,16 @@ app.post("/addToFavorite/:itemId",
 app.get("/showFavorites",
   async(req, res,next) => {
     try {
-      let authorID = req.user._id
-      const query={
-        authorID:authorID
-      }
-      res.locals.notes =
-          await Note.find(query)
+      console.log(req.user.favorites);
+
+      res.locals.notes = await Note.find({_id:req.user.favorites})
+
       res.locals.notes.sort((a,b) => b.createdAt - a.createdAt)
       res.render('showNotes')
     } catch (e) {
       console.dir(e)
       console.log("Error:")
-      res.send("There was an error in /showFilteredNotes!")
+      res.send("There was an error in /showFavorites!")
       next(e)
     }
   }

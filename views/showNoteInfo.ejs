@@ -5,9 +5,9 @@
   <p>Created at <%= note.createdAt %></p>
   <!--<input type="radio" id="add" name="favorite" value="" />
   <label for="add" title="text">Add to Your Favorites</label>-->
-<form action="/addToFavorite/<%=note._id%>" method="post">
-    <input type="submit" name="" value=""><span class="button">Add to favorite</span></input>
-</form>
+  <form action="/addToFavorite/<%=note._id%>" method="post">
+    <input class="button" type="submit" value="Add to my favorites">
+  </form>
 
   <br><h3>Notes: </h3><br>
   <p><%= note.note %> </p>
