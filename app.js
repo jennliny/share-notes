@@ -1,4 +1,5 @@
 "use strict";
+const bodyParser = require('body-parser');
 const Note=require("./models/Note");
 const Comment=require("./models/Comment");
 const multer = require('multer');
@@ -82,18 +83,20 @@ app.get("/rating/:itemId",
     res.render("rating");
 });
 
+app.user(bodyParser.json());
+app.user(bodyParser.urlencoded({extended: true}));
 app.post("/addRating/:itemId",
   async(req,res, next)=>{
     try{
       res.locals.note = await Note.findOne({_id:req.params.itemId})
       let comment = req.body.comment
-      //let rate= req.body.rate
+      let rate= req.body.rate
       let createdAt=new Date()
       let user = req.user.googlename
       let userId = req.user._id
       let note = res.locals.note
-      let newComment=new Comment({user:user,userId:userId,note:note,createdAt:createdAt, comment:comment
-        //,rate:rate
+      let newComment=new Comment({user:user,userId:userId,note:note,createdAt:createdAt, comment:comment,
+        rate:rate
       })
       await newComment.save()
       console.log(newComment);
