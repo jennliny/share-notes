@@ -32,14 +32,14 @@ app.use(express.json());
 app.use(layouts);
 app.use(express.static("public"));
 
-const storage = multer.diskStorage({
+/*const storage = multer.diskStorage({
   destination: './public/uploads/images',
   filename: function(req, file, cb){
     cb(null, file.fieldname + '-' + Date.now() + '-' + path.extname(file.originalname));
   }
 });
 
-const upload = multer({storage: storage});
+const upload = multer({storage: storage});*/
 
 
 /*const server = app.listen(app.get("port"), () => {
@@ -108,23 +108,6 @@ app.post("/addRating/:itemId",
     }
 });
 
-
-/*
-var rate=document.getElementById('rates').value;
-var rate_value;
-if (document.getElementById('star5').checked) {
-  rate_value = document.getElementById('rate').value;
-}elseif(document.getElementById('star4').checked){
-  rate_value=document.getElementById('rate').value;
-}elseif(document.getElementById('star3').checked){
-  rate_value=document.getElementById('rate').value;
-}elseif(document.getElementById('star3').checked){
-  rate_value=document.getElementById('rate').value;
-}elseif(document.getElementById('star2').checked){
-  rate_value=document.getElementById('rate').value;
-}elseif(document.getElementById('star1').checked){
-  rate_value=document.getElementById('rate').value;
-}*/
 
 /*
 var count = 0;
@@ -289,7 +272,7 @@ app.get('/profile',
        isLoggedIn,
        (req,res) => res.render('editProfile'))
 
-   app.post('/editProfile', upload.single('profile_pic'),
+  /* app.post('/editProfile', upload.single('profile_pic'),
        isLoggedIn,
        async (req,res,next) => {
          try {
@@ -306,7 +289,7 @@ app.get('/profile',
            next(error)
          }
 
-       })
+       })*/
 
 
 app.onclick = function(event) {
