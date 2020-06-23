@@ -33,14 +33,13 @@ app.use(layouts);
 app.use(express.static("public"));
 
 /*const storage = multer.diskStorage({
-  destination: './public/uploads/images',
+  destination: './public/uploads/',
   filename: function(req, file, cb){
     cb(null, file.fieldname + '-' + Date.now() + '-' + path.extname(file.originalname));
   }
 });
 
 const upload = multer({storage: storage});*/
-
 
 /*const server = app.listen(app.get("port"), () => {
 console.log(`Server running at http://localhost:
