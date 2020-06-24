@@ -1,8 +1,10 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <div class="container">
-  <h2><%= note.subject %> <%= note.courseID %> <%= note.section %> <%= note.term %> <%=note.title %></h2>
-  <h3>Created by <%= note.author %></h3>
+  <h2><%= note.subject %> <%= note.courseID %> <%= note.section %> <%= note.term %>: <%=note.title %></h2>
+  <h4>Created by <%= note.author %></h4>
   <p>Created at <%= note.createdAt %></p>
+  <div id="overall" value="">Overall Rate: </div>
+  <br>
   <!--<input type="radio" id="add" name="favorite" value="" />
   <label for="add" title="text">Add to Your Favorites</label>-->
   <form action="/addToFavorite/<%=note._id%>" method="post">
@@ -24,8 +26,15 @@
         <h5 class="card-title" style="color:blue"><%=comment.user%></h5>
         <p class="card-text"><%= comment.comment %></p>
         <p class="card-text"><repeat n="<%=comment.rate %>"></repeat></p>
-        <p class="card-text text-muted"><i>[Created at <%= comment.createdAt %>]</i>
-        </p>
+        <p class="card-text text-muted"><i>[Created at <%= comment.createdAt %>]</i></p>
+
+        <script>
+          var total;
+          total+=<%=comment.rate%>;
+          document.getElementById("overall")=total;
+          console.log(total);
+        </script>
+
       </div>
     </div>
        <br>

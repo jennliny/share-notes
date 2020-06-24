@@ -5,18 +5,19 @@
   <div class="col-sm-6">
     <h2>Add your notes and share them with other students!</h2>
     <p>Type/Upload your notes for
-    <%= subject %> <%= courseID %> <%= section %> <%= term %> </p>
+    <%= subject %> <%= courseID %> <%= section %> <%= term %>: <%= title %> </p>
 
     <form action="/addNote" method="post">
      <input type="hidden" name="subject" value="<%= subject %>">
      <input type="hidden" name="courseID" value="<%= courseID %>">
      <input type="hidden" name="section" value="<%= section %>">
      <input type="hidden" name="term" value="<%= term %>">
+     <input type="hidden" name="title" value="<%= title %>">
 
 
      <hr>
      <h3>Your Notes</h3>
-     
+
      <textarea name="note" rows="5" cols="40"></textarea>
      <br>
      <br>
