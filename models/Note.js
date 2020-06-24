@@ -6,10 +6,7 @@ const ObjectId = mongoose.Schema.Types.ObjectId;
 
 
 const noteSchema = Schema( {
-  term: {
-    type:String,
-    required:true
-  },
+  term:String,
   subject: String,
   title: String,
   courseID: String,

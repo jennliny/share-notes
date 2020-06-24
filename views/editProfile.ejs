@@ -12,14 +12,17 @@
       <h4><%= user.googleemail %></h4>
       <p>Change username: </p>
       <input type="text" name="username"
-         value="<%= user.username %>"><br>
+         value="<%= user.username %>">
+      <br>
+      <br>
       <p>Change image by URL: </p>
       <input type="text" name="imageURL"
          value="<%= user.imageURL %>">
+      <br>
+      <br>
+      <input class="btn btn-lg btn-info" type="submit" value="Update Profile">
     </div>
-    <div class="col-sm-2">
-      <center><input class="btn btn-lg btn-info" type="submit" value="Update Profile"></center>
-    </div>
+
 
 
   </form>

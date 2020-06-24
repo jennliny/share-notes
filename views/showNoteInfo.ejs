@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <div class="container">
-  <h2><%= note.subject %> <%= note.courseID %> <%= note.section %> <%= note.term %></h2>
+  <h2><%= note.subject %> <%= note.courseID %> <%= note.section %> <%= note.term %> <%=note.title %></h2>
   <h3>Created by <%= note.author %></h3>
   <p>Created at <%= note.createdAt %></p>
   <!--<input type="radio" id="add" name="favorite" value="" />
@@ -10,7 +10,9 @@
   </form>
 
   <br><h3>Notes: </h3><br>
-  <p><%= note.note %> </p>
+  <div class="panel panel-default">
+   <div class="panel-body"><%= note.note %> </div>
+ </div>
   <br><br><br>
 </div>
 <div class="container">
