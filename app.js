@@ -12,9 +12,11 @@ const express = require("express"),
   layouts = require("express-ejs-layouts");
 
 const mongoose = require("mongoose");
-  mongoose.connect(
-     'mongodb://localhost/share-notes',
-     {useNewUrlParser:true})
+
+//mongoose.connect('mongodb://localhost/share-notes',{useNewUrlParser:true})
+const mongoDB_URI = process.env.MONGODB_URI
+mongoose.connect(mongoDB_URI)
+
 const db = mongoose.connection;
   db.on('error',(x)=>console.log("connection error"+x))
   db.once('open',(x)=>console.log("We connected at "+new Date()+x))
