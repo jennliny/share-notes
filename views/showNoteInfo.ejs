@@ -15,25 +15,15 @@
 </div>
 <div class="container">
   <h3>Comments / Ratings: </h3><br>
+
   <% comments.forEach(comment => {%>
     <div class="card" id="noteInfoCard">
       <div class="card-body">
         <h5 class="card-title" style="color:blue"><%=comment.user%></h5>
         <p class="card-text"><%= comment.comment %></p>
-        <p class="card-text" id="demo"></p>
-          <script>
-            var text="";
-            var i;
-            var rate=<%=comment.rate %>;
-            for(i=0;i<rate;i++){
-              text+="★";
-            }
-            document.getElementById("demo").innerHTML = text;
-          </script>
+        <p class="card-text"><repeat n="<%=comment.rate %>"></repeat></p>
         <p class="card-text text-muted"><i>[Created at <%= comment.createdAt %>]</i>
         </p>
-
-
       </div>
     </div>
        <br>
@@ -41,3 +31,26 @@
   <% }) %>
 
 </div>
+
+<style>
+
+  repeat[n="1"]:before {
+     content: "★";
+  }
+
+  repeat[n="2"]:before {
+     content: "★★";
+  }
+
+  repeat[n="3"]:before {
+     content: "★★★";
+  }
+
+  repeat[n="4"]:before {
+     content: "★★★★";
+  }
+
+  repeat[n="5"]:before {
+     content: "★★★★★";
+  }
+</style>

@@ -19,8 +19,6 @@ const noteSchema = Schema( {
   authorEmail: String,
   note: String,
   createdAt: Date
-
-  //file:
 });
 
 module.exports = mongoose.model('Note', noteSchema);
