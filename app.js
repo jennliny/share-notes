@@ -155,7 +155,7 @@ app.post('/addNote',
       let term= req.body.term
       let section = req.body.section
       let newNote = new Note({authorID:authorID, author:author, note:note,
-        subject:subject,  courseID:courseID, createdAt:createdAt, authorEmail:authorEmail, title:title
+        subject:subject,  courseID:courseID, createdAt:createdAt, authorEmail:authorEmail, title:title,
         term: term, section: section})
       await newNote.save()
       res.redirect(`/showNotes/${
@@ -222,7 +222,7 @@ app.post("/addToFavorite/:itemId",
   async(req,res,next)=>{
     try{
       res.locals.note = await Note.findOne({_id:req.params.itemId})
-      console.log(res.locals.note)
+
       req.user.favorites.push(res.locals.note)
       await req.user.save()
       console.log(req.user.favorites)
@@ -233,6 +233,8 @@ app.post("/addToFavorite/:itemId",
     }
   }
 )
+
+
 
 app.get("/showFavorites",
   async(req, res,next) => {
@@ -250,8 +252,9 @@ app.get("/showFavorites",
       next(e)
     }
   }
-
 );
+
+
 
 app.get("/showNoteInfo/:itemId",
   async(req, res, next) => {
@@ -314,11 +317,11 @@ app.get('/profile',
          res.render('profile')
        })
 
-   app.get('/editProfile',
+app.get('/editProfile',
        isLoggedIn,
        (req,res) => res.render('editProfile'))
 
-       app.post('/editProfile', upload.single('profile_pic'),
+app.post('/editProfile', upload.single('profile_pic'),
            isLoggedIn,
            async (req,res,next) => {
              try {
