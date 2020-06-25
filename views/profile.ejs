@@ -1,6 +1,11 @@
 <div class="container">
   <div class="col-sm-6">
+    <% if (user.imageURL === "") { %>
+      <img src="/uploads/blank-profile-picture.png" alt="image of user">
+    <% }else{ %>
       <img src="<%= user.imageURL %>" alt="image of user">
+    <% } %>
+
   </div>
   <div class="col-sm-6">
       <table class="table table-bordered">
