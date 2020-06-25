@@ -18,4 +18,4 @@ const noteSchema = Schema( {
   createdAt: Date
 });
 
-module.exports = mongoose.model('Note', noteSchema);
+module.exports = mongoose.model('NoteT5', noteSchema);

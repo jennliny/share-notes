@@ -16,4 +16,4 @@ var userSchema = Schema( {
   favorites:[{type:Schema.Types.ObjectId, ref:"Note"}]
 } );
 
-module.exports = mongoose.model( 'User', userSchema );
+module.exports = mongoose.model( 'UserT5', userSchema );

@@ -14,4 +14,4 @@ const commentSchema = Schema( {
   rate:Number
 });
 
-module.exports = mongoose.model('Comment', commentSchema);
+module.exports = mongoose.model('CommentT5', commentSchema);
