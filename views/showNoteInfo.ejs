@@ -9,14 +9,13 @@
   <%
     var x = false; //x=false means that the note is not in the favorites array,
     //so the button should be add to Favorite.
-    console.log(user.favorites);
-    console.log(note._id);
+
     for(i=0; i<user.favorites.length; i++){
       if(user.favorites[i].equals(note._id )){
         x = true;
       }
     }
-    console.log(x);
+    
   %>
   <% if (!x) { %>
     <form action="/addToFavorite/<%=note._id%>" method="post">

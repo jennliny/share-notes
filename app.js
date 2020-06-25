@@ -81,7 +81,6 @@ app.get("/rating/:itemId",
   isLoggedIn,
   async(req, res, next) => {
     res.locals.note = await Note.findOne({_id:req.params.itemId})
-    console.log(req.params.itemId)
     res.render("rating");
 });
 
@@ -101,7 +100,6 @@ app.post("/addRating/:itemId",
         rate:rate
       })
       await newComment.save()
-      console.log(newComment);
       res.redirect(`/showNoteInfo/${
           req.params.itemId}/`)
     }catch(e){
@@ -224,14 +222,13 @@ app.post("/addToFavorite/:itemId",
   async(req,res,next)=>{
     try{
       res.locals.note = await Note.findOne({_id:req.params.itemId})
-
       req.user.favorites.push(res.locals.note)
       await req.user.save()
-      console.log(req.user.favorites)
       res.redirect(`/showNoteInfo/${
           req.params.itemId}`)
     }catch(e){
       res.send("There was an error in /addToFavorite")
+      next(e)
     }
   }
 )
@@ -241,10 +238,7 @@ app.post("/addToFavorite/:itemId",
 app.get("/showFavorites",
   async(req, res,next) => {
     try {
-      console.log(req.user.favorites);
-
       res.locals.notes = await Note.find({_id:req.user.favorites})
-
       res.locals.notes.sort((a,b) => b.createdAt - a.createdAt)
       res.render('showNotes')
     } catch (e) {
@@ -261,7 +255,7 @@ app.get("/showFavorites",
 app.get("/showNoteInfo/:itemId",
   async(req, res, next) => {
     try {
-      console.log(req.params.itemId)
+
       res.locals.note = await Note.findOne({_id:req.params.itemId})
       const query={
         note:req.params.itemId
@@ -317,38 +311,27 @@ app.get('/profile',
        isLoggedIn,
        (req,res) => {
          res.render('profile')
-       })
+})
 
 app.get('/editProfile',
        isLoggedIn,
        (req,res) => res.render('editProfile'))
 
-app.post('/editProfile', upload.single('profile_pic'),
+app.post('/editProfile',
            isLoggedIn,
            async (req,res,next) => {
              try {
-               if(req.file === undefined  ){
-                 if (req.user.imageFileName === "") {
-                   req.user.imageFileName = 'blank-profile-picture.png';
-                 }
-               }else {
-                 req.user.imageFileName = req.file.filename;
-               }
-               console.log(req.user.imageFileName);
-
 
                let username = req.body.username
                req.user.username = username
                req.user.imageURL = req.body.imageURL;
-
                await req.user.save()
-               console.log(req.user);
                res.redirect('/profile')
              } catch (error) {
                next(error)
              }
 
-           })
+})
 
 
 app.onclick = function(event) {
