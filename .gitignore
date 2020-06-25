@@ -1,5 +1,5 @@
 .DS_Store
 node_modules
-auth.js
 dist
 env.sh
+auth.js
