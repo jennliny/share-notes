@@ -1,9 +1,9 @@
 <div class="container">
   <div class="col-sm-6">
-    <% if (user.imageURL === "") { %>
-      <img src="/uploads/blank-profile-picture.png" alt="image of user">
+    <% if (user.imageURL == "") { %>
+      <img src="/images/blank-profile-picture.png" alt="image of user">
     <% }else{ %>
-      <img src="<%= user.imageURL %>" alt="image of user">
+      <img src="<%= user.imageURL %>" alt="image of users">
     <% } %>
 
   </div>
@@ -36,20 +36,3 @@
       </ul>
   </div>
 </div>
-
-<!--<div class="container">
-  <div class="col-sm-12">
-    <ul>
-       notes.forEach(note => {%>
-        <li>
-          Subject: < note.subject %><br>
-          Course #: < note.courseID %><br>
-          Name: < note.title %><br>
-          Term: <note.term %><br>
-          Section: <note.section %><br>
-        </li>
-        <br>
-      < }) %>
-    </ul>
-  </div>
-</div>-->

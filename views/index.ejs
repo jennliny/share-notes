@@ -32,7 +32,13 @@
     <p> Find your course under <a href="/courses"><span style="color:#008080;font-style: italic;font-weight:500;">the courses tab</a> and browse
        through your classmates' notes!</p>
     <h4><b>* Support your classmates</b></h4>
-    <p> When you feel inspired to contribute, head over to <a href="/addNote"><span style="color:#008080;font-style: italic;font-weight:500;">add a note</a>
+    <p> When you feel inspired to contribute, login in and head over to <% if (loggedIn) {%>
+    <a href="/addNote"><span style="color:#008080;font-style: italic;font-weight:500;">
+      add a note
+    </a>
+    <% }else{%>
+      add a note
+    <%}%>
        yourself.</p>
    <h4><b>* Connect with your classmates</b></h4>
       <h5>School is more than great exam results.</h5>

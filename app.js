@@ -2,7 +2,7 @@
 const bodyParser = require('body-parser');
 const Note=require("./models/Note");
 const Comment=require("./models/Comment");
-const multer = require('multer');
+//const multer = require('multer');
 const path = require('path');
 const helpers = require('helpers');
 const express = require("express"),
@@ -36,7 +36,7 @@ app.use(express.json());
 app.use(layouts);
 app.use(express.static("public"));
 
-const storage = multer.diskStorage({
+/*const storage = multer.diskStorage({
   destination: './public/uploads',
   filename: function(req, file, cb){
     cb(null, file.fieldname + '-' + Date.now() + '-' + path.extname(file.originalname));
@@ -46,7 +46,7 @@ const storage = multer.diskStorage({
 const upload = multer({storage: storage});
 
 
-/*const server = app.listen(app.get("port"), () => {
+const server = app.listen(app.get("port"), () => {
 console.log(`Server running at http://localhost:
 ${ app.get("port") }`);
 }),
@@ -304,7 +304,7 @@ app.get('/remove/:subject/:courseID/:section/:term/:itemId',
              req.params.courseID}/${
              req.params.section}/${
              req.params.term}`)
-   });
+});
 
 //Routes for profile stuff
 app.get('/profile',
@@ -314,23 +314,20 @@ app.get('/profile',
 })
 
 app.get('/editProfile',
-       isLoggedIn,
-       (req,res) => res.render('editProfile'))
+    isLoggedIn,
+    (req,res) => res.render('editProfile'))
 
 app.post('/editProfile',
-           isLoggedIn,
-           async (req,res,next) => {
-             try {
-
-               let username = req.body.username
-               req.user.username = username
-               req.user.imageURL = req.body.imageURL;
-               await req.user.save()
-               res.redirect('/profile')
-             } catch (error) {
-               next(error)
-             }
-
+    isLoggedIn,
+    async (req,res,next) => {
+      try {
+        req.user.username = req.body.username
+        req.user.imageURL = req.body.imageURL
+        await req.user.save()
+        res.redirect('/profile')
+      }catch (error) {
+        next(error)
+      }
 })
 
 
@@ -352,7 +349,4 @@ app.onclick = function(event) {
 app.use(errorController.pageNotFoundError);
 app.use(errorController.internalServerError);
 
-//app.listen(app.get("port"), () => {
-  //console.log(`Server running at http://localhost:${app.get("port")}`);
-//});
 module.exports=app;

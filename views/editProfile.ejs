@@ -28,20 +28,14 @@
 </form>-->
 
 <div class="container">
-  <form method="post" action="editProfile" enctype="multipart/form-data">
-<!--  <div class="col-sm-4">
-    <center>
-      <label>Select your profile picture: </label>
-      <input type="file" name="profile_pic">
-    </center>
-  </div>-->
+  <form method="post" action="editProfile">
 
     <div class="col-sm-12"><center>
       <h3><%= user.googlename %></h3>
       <h4><%= user.googleemail %></h4>
       <p>Change username: </p>
       <input type="text" name="username"
-         value="<%= user.username %>">
+        value="<%= user.username %>">
       <br>
       <br>
       <p>Change image by URL: </p>
@@ -51,10 +45,5 @@
       <br>
       <input class="btn btn-lg btn-info" type="submit" value="Update Profile"></center>
     </div>
-
-
-
   </form>
-
-
 </div>

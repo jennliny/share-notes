@@ -3,7 +3,6 @@
 const mongoose = require( 'mongoose' );
 const Schema = mongoose.Schema;
 
-//var userSchema = mongoose.Schema( {any:{}})
 
 var userSchema = Schema( {
   googleid: String,
@@ -12,7 +11,6 @@ var userSchema = Schema( {
   googleemail:String,
   username:String,
   imageURL: String,
-  imageFileName: String,
   favorites:[{type:Schema.Types.ObjectId, ref:"Note"}]
 } );
 

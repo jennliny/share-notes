@@ -1,9 +1,6 @@
 <div class="container">
-  <div class="col-sm-6">
-    <img src="images/shownotes.jpg" alt="">
-  </div>
-  <div class="col-sm-6">
       <h1>Notes</h1>
+      <br>
       <div class="card-columns">
         <% notes.forEach(note => {%>
 
@@ -21,25 +18,10 @@
                   [<a href="/rating/<%= note._id %>" class="card-link">Comment & Rating</a>]
                   [<a href="mailto:<%= note.authorEmail %>">Email the author</a>]
                   [<a href="/showNoteInfo/<%= note._id %>">View details</a>]
-
-
             </div>
           </div>
-
-          <!-- <table>
-          <tr><th>Author</th><th> %= note.author %></th></tr>
-          <tr><th>Subject</th><th> %= note.subject %></th></tr>
-          <!--<tr><th>Title</th><th> %= note.title %></th></tr>-->
-          <!-- <tr><th>Course number </th><th> %= note.courseID %></th></tr>
-          <tr><th>Section</th><th> %= note.section %></th></tr>
-          <tr><th>Term</th><th>%= note.term%></th></tr>
-          <tr><th>Created At</th><th> %= note.createdAt %> </th></tr>
-          <tr><th>Notes</th><th> %= note.note%> </th></tr>
-          </table> -->
           <br>
-
           <br><br>
         <% }) %>
                 </div>
-  </div>
 </div>
