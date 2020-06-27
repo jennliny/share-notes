@@ -3,9 +3,8 @@
   <h2><%= note.subject %> <%= note.courseID %> <%= note.section %> <%= note.term %>: <%=note.title %></h2>
   <h4>Created by <%= note.author %></h4>
   <p>Created at <%= note.createdAt %></p>
-  <div id="overall" value="">Overall Rate: </div>
-  <br>
-
+  <!--<div id="overall" value="">-->
+<br>
   <%
     var x = false; //x=false means that the note is not in the favorites array,
     //so the button should be add to Favorite.
@@ -46,7 +45,7 @@
         <p class="card-text text-muted"><i>[Created at <%= comment.createdAt %>]</i></p>
 
         <script>
-          var total;
+          var total=0;
           total+=<%=comment.rate%>;
           document.getElementById("overall")=total;
           console.log(total);

@@ -101,19 +101,18 @@ th, td {
 
 Dropdown Button
 .dropbtn {
-  background-color: #FFFFFF;
+  background-color: #00D9D9;
   font-size: 30px;
   border: none;
   cursor: pointer;
   padding: 0.3vw 3vw;
   border-radius: 2px;
-  display: inline-block;
-  color: #fff;
+  color:#00D9D9 ;
 }
 
 /* Dropdown button on hover & focus */
 .dropbtn:hover, .dropbtn:focus {
-  background-color: #FFFFFF;
+  background-color: #00D9D9;
 }
 
 /* The container <div> - needed to position the dropdown content */

@@ -13,21 +13,21 @@
 
 
 	<div id="nav">
-			<h1 style="text-indent: -70%"id="title"><a href="/">Share Notes</a></h1>
-		<div style='float:right;  margin:10px;'>
+			<h1 style="text-indent: -70%"id="title"><a href="/"><span style="color:#005959">Share Notes</a></h1>
+		<div style='float:right; margin:10px;'>
 			<% if (!loggedIn) {%>
-			[<a href="/auth/google">
+			<div><a href="/auth/google" class="btn btn-info">
 				log in
-			</a>]
+			</a></div>
 			<% } else  { %>
 				<div class="dropdown">
-				        <button onclick="myFunction()" class="dropbtn"><%= user.googleemail %></button>
+				        <button onclick="myFunction()" class="dropbtn btn btn-info"><%= user.googleemail %></button>
 				        <div id="myDropdown" class="dropdown-content">
 				          <a href="/profile">Profile</a>
 				          <a href="/editProfile">Edit Profile</a>
 				          <a href="/logout">Logout</a>
 				        </div>
-				      </div>
+				 </div>
 			<% } %>
 		</div>
 		<div><center>
