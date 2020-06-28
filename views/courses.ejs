@@ -126,7 +126,24 @@
           Subject: <%= course.subject %><br>
           Course #: <%= course.coursenum %><br>
           Section: <%=course.section %><br>
-          Term: <%=course.term %><br>
+          Term: <!--<div id="term">Term: </div>--><%=course.term %><br>
+
+<!--<script>
+  var x=<course.term %>;
+  var y="Fall 2019";
+  var z="Spring 2020";
+  var w="Summer 2020";
+  var v="Fall 2020";
+  if(x==1193){
+    document.getElementById("term").innerHTML=y;
+  }else if(x==1201){
+    document.getElementById("term").innerHTML=z;
+  }else if(x==1202){
+    document.getElementById("term").innerHTML=w;
+  }else if(x==1203){
+    document.getElementById("term").innerHTML=v;
+  }
+</script>-->
 
 
           <% if (loggedIn) { %>

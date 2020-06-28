@@ -223,3 +223,7 @@ Dropdown Button
   --star-color: #fff;
   --star-background: #fc0;
 }
+
+.form.label{
+  text-align: right;
+}

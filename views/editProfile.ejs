@@ -1,49 +1,48 @@
-<!--
-<form method="post" action="editProfile" enctype="multipart/form-data">
-<div class="form-grouop row">
-  <label for ="accountName" class="col-sm-2 col-form label">User's Name</label>
-  <div class="col-sm-10">
-    <input type="text" readonly class="form-control-plaintext" id="accountName" value="<user.googlename %>">
-<div class="form-group row">
-    <label for="userEmail" class="col-sm-2 col-form-label">Email</label>
-    <div class="col-sm-10">
-      <input type="text" readonly class="form-control-plaintext" id="userEmail" value="<user.googleemail %>">
-    </div>
-  </div>
-<div class="form-group row">
-  <label for="username" class="col-sm-2 col-form-label">Change Username: </label>
-  <div class="col-sm-10">
-    <input type="text" name="username" value="<user.username %>">
-  </div>
-</div>
-<div class="form-group row">
-  <label for="imageURL" class="col-sm-2 col-form-label">Change Image by URL: </label>
-  <div class="col-sm-10">
-    <input type="text" name="imageURL" value="<user.imageURL %>">
-  </div>
-</div>
-<div>
-<input class="btn btn-lg btn-info" type="submit" value="Update Profile">
-</div>
-</form>-->
-
 <div class="container">
+<form method="post" action="editProfile"><center>
+  <!--<img src="<user.imageURL %>" alt="image of users">-->
+  <br>
+  <br>
+  <br>
+  <center> <h3><%= user.googlename %></h3>
+    <h4><%= user.googleemail %></h4> </center>
+    <br>
+<div class="form-group row" style="text-align:right">
+  <label for="username" class="col-sm-6 col-form-label" >Change Username: </label>
+  <div class="col-sm-6" style="text-align:left">
+    <input type="text" name="username" value="<%=user.username %>">
+  </div>
+</div>
+<div class="form-group row" style="text-align:right">
+  <label for="imageURL" class="col-sm-6 col-form-label">Change Image by URL: </label>
+  <div class="col-sm-6" style="text-align:left">
+    <input type="text" name="imageURL" value="<%=user.imageURL %>">
+  </div>
+</div>
+<br>
+<div>
+<input class="btn btn-sm btn-info" type="submit" value="Update Profile">
+</div>
+</form>
+</div>
+
+<!--<div class="container">
   <form method="post" action="editProfile">
 
     <div class="col-sm-12"><center>
-      <h3><%= user.googlename %></h3>
-      <h4><%= user.googleemail %></h4>
+      <h3>< user.googlename %></h3>
+      <h4>< user.googleemail %></h4>
       <p>Change username: </p>
       <input type="text" name="username"
-        value="<%= user.username %>">
+        value="<user.username %>">
       <br>
       <br>
       <p>Change image by URL: </p>
       <input type="text" name="imageURL"
-         value="<%= user.imageURL %>">
+         value="< user.imageURL %>">
       <br>
       <br>
       <input class="btn btn-lg btn-info" type="submit" value="Update Profile"></center>
     </div>
   </form>
-</div>
+</div>-->
