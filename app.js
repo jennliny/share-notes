@@ -12,10 +12,12 @@ const express = require("express"),
   layouts = require("express-ejs-layouts");
 
 const mongoose = require("mongoose");
+require('dotenv').config({ path: 'env.sh' });
 
 //mongoose.connect('mongodb://localhost/share-notes',{useNewUrlParser:true})
 const mongoDB_URI = process.env.MONGODB_URI
-mongoose.connect(mongoDB_URI)
+mongoose.connect(mongoDB_URI, {useNewUrlParser:true})
+
 
 const db = mongoose.connection;
   db.on('error',(x)=>console.log("connection error"+x))
