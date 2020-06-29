@@ -10,6 +10,7 @@ var userSchema = Schema( {
   googlename:String,
   googleemail:String,
   username:String,
+  university:String,
   imageURL: String,
   favorites:[{type:Schema.Types.ObjectId, ref:"Note"}]
 } );

@@ -324,6 +324,7 @@ app.post('/editProfile',
     async (req,res,next) => {
       try {
         req.user.username = req.body.username
+        req.user.university=req.body.university
         req.user.imageURL = req.body.imageURL
         await req.user.save()
         res.redirect('/profile')
