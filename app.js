@@ -77,7 +77,7 @@ app.get("/Keyi", (req, res) => {
   res.render("Keyi");
 });
 
-app.get("/chat",homeController.chat);
+//app.get("/chat",homeController.chat);
 
 app.get("/rating/:itemId",
   isLoggedIn,
