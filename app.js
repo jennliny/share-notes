@@ -137,7 +137,7 @@ app.get("/addNote",
   }
 );
 //route to adding a note page
-app.get("/note/:subject/:courseID/:section/:term:title",
+app.get("/note/:subject/:courseID/:section/:term",
   (req, res) => {
     res.render("note", req.params)
   }
@@ -152,12 +152,12 @@ app.post('/addNote',
       let note = req.body.note
       let subject = req.body.subject
       let createdAt = new Date()
-      let title = req.body.title
+      //let title = req.body.title
       let courseID = req.body.courseID
       let term= req.body.term
       let section = req.body.section
       let newNote = new Note({authorID:authorID, author:author, note:note,
-        subject:subject,  courseID:courseID, createdAt:createdAt, authorEmail:authorEmail, title:title,
+        subject:subject,  courseID:courseID, createdAt:createdAt, authorEmail:authorEmail,
         term: term, section: section})
       await newNote.save()
       res.redirect(`/showNotes/${
