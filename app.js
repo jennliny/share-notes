@@ -77,7 +77,7 @@ app.get("/Keyi", (req, res) => {
   res.render("Keyi");
 });
 
-app.get("/chat",homeController.chat);
+//app.get("/chat",homeController.chat);
 
 app.get("/rating/:itemId",
   isLoggedIn,
@@ -133,9 +133,9 @@ $(document).ready(function(){
 
 app.get("/addNote",
   (req,res) =>{
-    res.render("addNote");
+    res.render("addNote")
   }
-);
+)
 //route to adding a note page
 app.get("/note/:subject/:courseID/:section/:term",
   (req, res) => {
@@ -152,7 +152,10 @@ app.post('/addNote',
       let note = req.body.note
       let subject = req.body.subject
       let createdAt = new Date()
+<<<<<<< HEAD
       //let title = req.body.title
+=======
+>>>>>>> efa2ce9167a643d9b3252751731149c48f4fc709
       let courseID = req.body.courseID
       let term= req.body.term
       let section = req.body.section
