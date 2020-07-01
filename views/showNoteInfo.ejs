@@ -1,6 +1,15 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <div class="container">
-  <h2><%= note.subject %> <%= note.courseID %> <%= note.section %> <%= note.term %>: <%=note.title %></h2>
+  <h2><%= note.subject %><%= note.courseID %> <%= note.section %>
+    <%if(note.term==1193){%>
+      Fall 2019
+    <%}else if(note.term==1201){%>
+      Spring 2020
+    <%}else if(note.term==1202){%>
+      Summer 2020
+    <%}else if(note.term==1203){%>
+      Fall 2020
+    <%}%>: <%=note.title %></h2>
   <h4>Created by <%= note.author %></h4>
   <p>Created at <%= note.createdAt %></p>
   <!--<div id="overall" value="">-->
