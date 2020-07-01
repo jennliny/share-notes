@@ -79,7 +79,7 @@ app.post("/addRating/:itemId",
       let user = req.user.googlename
       let userId = req.user._id
       let note = res.locals.note
-      let newComment=new Comment({suser:user,userId:userId,note:note,createdAt:createdAt, comment:comment,
+      let newComment=new Comment({user:user,userId:userId,note:note,createdAt:createdAt, comment:comment,
         rate:rate
       })
       await newComment.save()
@@ -228,6 +228,7 @@ app.get("/showNoteInfo/:itemId",
         note:req.params.itemId
       }
       res.locals.comments = await Comment.find(query)
+      
       res.render('showNoteInfo')
     } catch (e) {
       next(e)
