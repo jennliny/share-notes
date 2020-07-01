@@ -98,7 +98,7 @@ app.post("/addRating/:itemId",
       let user = req.user.googlename
       let userId = req.user._id
       let note = res.locals.note
-      let newComment=new Comment({user:user,userId:userId,note:note,createdAt:createdAt, comment:comment,
+      let newComment=new Comment({suser:user,userId:userId,note:note,createdAt:createdAt, comment:comment,
         rate:rate
       })
       await newComment.save()
@@ -152,10 +152,6 @@ app.post('/addNote',
       let note = req.body.note
       let subject = req.body.subject
       let createdAt = new Date()
-<<<<<<< HEAD
-      //let title = req.body.title
-=======
->>>>>>> efa2ce9167a643d9b3252751731149c48f4fc709
       let courseID = req.body.courseID
       let term= req.body.term
       let section = req.body.section
