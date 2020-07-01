@@ -24,5 +24,5 @@ Please check out our web app here: https://share-notes.herokuapp.com/
 * Add future courses into our course database
 
 ## Contributors
-* @jennliny
-* @Yi-WenTseng
+* [@jennliny](https://github.com/jennliny)
+* [@Yi-WenTseng](https://github.com/Yi-WenTseng)
