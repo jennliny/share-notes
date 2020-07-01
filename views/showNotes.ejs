@@ -13,7 +13,16 @@
               <h5 class="card-title">By <%= note.author %> </h5>
               <h6 class="card-subtitle mb-2 text-muted">Created at <%= note.createdAt %></h6>
               <p class="card-text"><mark><a href="/showNotes/<%= note.subject %>/<%= note.courseID %>/<%= note.section %>/<%= note.term %> ">
-                <%= note.subject %> <%= note.courseID %> <%= note.section %> <%= note.term %> </a></mark></p>
+                <%= note.subject %><%= note.courseID %> <%= note.section %>
+                <%if(note.term==1193){%>
+                  Fall 2019
+                <%}else if(note.term==1201){%>
+                  Spring 2020
+                <%}else if(note.term==1202){%>
+                  Summer 2020
+                <%}else if(note.term==1203){%>
+                  Fall 2020
+                <%}%>: <%=note.title%> </a></mark></p>
 
               <% if(note.note.length <= 186) { %>
                 <p class="card-text"><%= note.note%></p>

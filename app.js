@@ -2,7 +2,6 @@
 const bodyParser = require('body-parser');
 const Note=require("./models/Note");
 const Comment=require("./models/Comment");
-//const multer = require('multer');
 const path = require('path');
 const helpers = require('helpers');
 const express = require("express"),
@@ -14,7 +13,6 @@ const express = require("express"),
 const mongoose = require("mongoose");
 require('dotenv').config({ path: 'env.sh' });
 
-//mongoose.connect('mongodb://localhost/share-notes',{useNewUrlParser:true})
 const mongoDB_URI = process.env.MONGODB_URI
 mongoose.connect(mongoDB_URI, {useNewUrlParser:true})
 
@@ -38,21 +36,6 @@ app.use(express.json());
 app.use(layouts);
 app.use(express.static("public"));
 
-/*const storage = multer.diskStorage({
-  destination: './public/uploads',
-  filename: function(req, file, cb){
-    cb(null, file.fieldname + '-' + Date.now() + '-' + path.extname(file.originalname));
-  }
-});
-
-const upload = multer({storage: storage});
-
-
-const server = app.listen(app.get("port"), () => {
-console.log(`Server running at http://localhost:
-${ app.get("port") }`);
-}),
-io = require("socket.io")(server);*/
 
 app.get("/", (req, res) => {
   res.render("index");
@@ -76,8 +59,6 @@ app.get("/yi-wen", (req, res) => {
 app.get("/Keyi", (req, res) => {
   res.render("Keyi");
 });
-
-//app.get("/chat",homeController.chat);
 
 app.get("/rating/:itemId",
   isLoggedIn,
@@ -121,23 +102,13 @@ app.get('/removeComment/:noteId/:itemId',
    });
 
 
-
-/*
-var count = 0;
-$(document).ready(function(){
-    $("form#Submit").submit(function(){
-             count++;
-        });
-});
-*/
-
 app.get("/addNote",
   (req,res) =>{
     res.render("addNote")
   }
 )
 //route to adding a note page
-app.get("/note/:subject/:courseID/:section/:term",
+app.get("/note/:subject/:courseID/:section/:term/:title",
   (req, res) => {
     res.render("note", req.params)
   }
@@ -152,14 +123,11 @@ app.post('/addNote',
       let note = req.body.note
       let subject = req.body.subject
       let createdAt = new Date()
-<<<<<<< HEAD
-      //let title = req.body.title
-=======
->>>>>>> efa2ce9167a643d9b3252751731149c48f4fc709
       let courseID = req.body.courseID
       let term= req.body.term
+      let title=req.body.title
       let section = req.body.section
-      let newNote = new Note({authorID:authorID, author:author, note:note,
+      let newNote = new Note({authorID:authorID, author:author, note:note,title:title,
         subject:subject,  courseID:courseID, createdAt:createdAt, authorEmail:authorEmail,
         term: term, section: section})
       await newNote.save()
@@ -184,8 +152,7 @@ app.get("/showNotes/:subject/:courseID/:section/:term",
         section:req.params.section,
         term:req.params.term,
       }
-      res.locals.notes =
-          await Note.find(query)
+      res.locals.notes =await Note.find(query)
       res.locals.subject = req.params.subject
       res.locals.courseID = req.params.courseID
       res.locals.section = req.params.section
@@ -260,7 +227,6 @@ app.get("/showFavorites",
 app.get("/showNoteInfo/:itemId",
   async(req, res, next) => {
     try {
-
       res.locals.note = await Note.findOne({_id:req.params.itemId})
       const query={
         note:req.params.itemId
