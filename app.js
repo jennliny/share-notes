@@ -153,10 +153,6 @@ app.get("/showNotes/:subject/:courseID/:section/:term",
         term:req.params.term,
       }
       res.locals.notes =await Note.find(query)
-      res.locals.subject = req.params.subject
-      res.locals.courseID = req.params.courseID
-      res.locals.section = req.params.section
-      res.locals.term = req.params.term
       res.locals.notes.sort((a,b) => b.createdAt - a.createdAt)
       //console.log(res.locals.notes)
        res.render('showNotes')
